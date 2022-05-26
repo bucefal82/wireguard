@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v17.1 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Как просто создать свой VPN (WireGuard VPN) - PC-01 | Этот компьютер</title>
+	<meta name="description" content="Как арендовать сервер и создать свой дешёвый, быстрый и надёжный VPN." />
+	<link rel="canonical" href="https://pc-01.tech/wireguard-vpn/" />
+	<meta property="og:locale" content="ru_RU" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Как просто создать свой VPN (WireGuard VPN) - PC-01 | Этот компьютер" />
+	<meta property="og:description" content="Как арендовать сервер и создать свой дешёвый, быстрый и надёжный VPN." />
+	<meta property="og:url" content="https://pc-01.tech/wireguard-vpn/" />
+	<meta property="og:site_name" content="PC-01 | Этот компьютер" />
+	<meta property="article:published_time" content="2022-03-15T11:53:32+00:00" />
+	<meta property="article:modified_time" content="2022-03-16T18:01:50+00:00" />
+	<meta property="og:image" content="https://pc-01.tech/wp-content/uploads/2022/03/VPN.jpg" />
+	<meta property="og:image:width" content="1920" />
+	<meta property="og:image:height" content="1080" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Написано автором" />
+	<meta name="twitter:data1" content="Павел Конюшков" />
+	<meta name="twitter:label2" content="Примерное время для чтения" />
+	<meta name="twitter:data2" content="19 минут" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://pc-01.tech/#website","url":"https://pc-01.tech/","name":"PC-01 | \u042d\u0442\u043e\u0442 \u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440","description":"\u041a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440\u043d\u044b\u0435 \u043d\u043e\u0432\u043e\u0441\u0442\u0438","publisher":{"@id":"https://pc-01.tech/#/schema/person/a315f122f65c08d13ee0434c475b55f9"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://pc-01.tech/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"ru-RU"},{"@type":"ImageObject","@id":"https://pc-01.tech/wireguard-vpn/#primaryimage","inLanguage":"ru-RU","url":"https://pc-01.tech/wp-content/uploads/2022/03/VPN.jpg","contentUrl":"https://pc-01.tech/wp-content/uploads/2022/03/VPN.jpg","width":1920,"height":1080},{"@type":"WebPage","@id":"https://pc-01.tech/wireguard-vpn/#webpage","url":"https://pc-01.tech/wireguard-vpn/","name":"\u041a\u0430\u043a \u043f\u0440\u043e\u0441\u0442\u043e \u0441\u043e\u0437\u0434\u0430\u0442\u044c \u0441\u0432\u043e\u0439 VPN (WireGuard VPN) - PC-01 | \u042d\u0442\u043e\u0442 \u043a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440","isPartOf":{"@id":"https://pc-01.tech/#website"},"primaryImageOfPage":{"@id":"https://pc-01.tech/wireguard-vpn/#primaryimage"},"datePublished":"2022-03-15T11:53:32+00:00","dateModified":"2022-03-16T18:01:50+00:00","description":"\u041a\u0430\u043a \u0430\u0440\u0435\u043d\u0434\u043e\u0432\u0430\u0442\u044c \u0441\u0435\u0440\u0432\u0435\u0440 \u0438 \u0441\u043e\u0437\u0434\u0430\u0442\u044c \u0441\u0432\u043e\u0439 \u0434\u0435\u0448\u0451\u0432\u044b\u0439, \u0431\u044b\u0441\u0442\u0440\u044b\u0439 \u0438 \u043d\u0430\u0434\u0451\u0436\u043d\u044b\u0439 VPN.","breadcrumb":{"@id":"https://pc-01.tech/wireguard-vpn/#breadcrumb"},"inLanguage":"ru-RU","potentialAction":[{"@type":"ReadAction","target":["https://pc-01.tech/wireguard-vpn/"]}]},{"@type":"BreadcrumbList","@id":"https://pc-01.tech/wireguard-vpn/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"\u0413\u043b\u0430\u0432\u043d\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430","item":"https://pc-01.tech/"},{"@type":"ListItem","position":2,"name":"\u041a\u0430\u043a \u043f\u0440\u043e\u0441\u0442\u043e \u0441\u043e\u0437\u0434\u0430\u0442\u044c \u0441\u0432\u043e\u0439 VPN (WireGuard VPN)"}]},{"@type":"Article","@id":"https://pc-01.tech/wireguard-vpn/#article","isPartOf":{"@id":"https://pc-01.tech/wireguard-vpn/#webpage"},"author":{"@id":"https://pc-01.tech/#/schema/person/a315f122f65c08d13ee0434c475b55f9"},"headline":"\u041a\u0430\u043a \u043f\u0440\u043e\u0441\u0442\u043e \u0441\u043e\u0437\u0434\u0430\u0442\u044c \u0441\u0432\u043e\u0439 VPN (WireGuard VPN)","datePublished":"2022-03-15T11:53:32+00:00","dateModified":"2022-03-16T18:01:50+00:00","mainEntityOfPage":{"@id":"https://pc-01.tech/wireguard-vpn/#webpage"},"wordCount":163,"commentCount":0,"publisher":{"@id":"https://pc-01.tech/#/schema/person/a315f122f65c08d13ee0434c475b55f9"},"image":{"@id":"https://pc-01.tech/wireguard-vpn/#primaryimage"},"thumbnailUrl":"https://pc-01.tech/wp-content/uploads/2022/03/VPN.jpg","keywords":["VPN"],"articleSection":["\u0422\u0435\u0441\u0442\u044b"],"inLanguage":"ru-RU","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://pc-01.tech/wireguard-vpn/#respond"]}]},{"@type":["Person","Organization"],"@id":"https://pc-01.tech/#/schema/person/a315f122f65c08d13ee0434c475b55f9","name":"\u041f\u0430\u0432\u0435\u043b \u041a\u043e\u043d\u044e\u0448\u043a\u043e\u0432","image":{"@type":"ImageObject","@id":"https://pc-01.tech/#personlogo","inLanguage":"ru-RU","url":"https://secure.gravatar.com/avatar/809135282404eb181900fd75f531415c?s=96&d=monsterid&r=g","contentUrl":"https://secure.gravatar.com/avatar/809135282404eb181900fd75f531415c?s=96&d=monsterid&r=g","caption":"\u041f\u0430\u0432\u0435\u043b \u041a\u043e\u043d\u044e\u0448\u043a\u043e\u0432"},"logo":{"@id":"https://pc-01.tech/#personlogo"},"description":"\u0410\u0432\u0442\u043e\u0440 YouTube \u043a\u0430\u043d\u0430\u043b\u0430 \"\u042d\u0442\u043e\u0442 \u041a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440\"","sameAs":["http://vk.com/id2930949","https://www.youtube.com/channel/UCPKVp0M7Z3iTRdqC-nIm5ng"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="PC-01 | Этот компьютер &raquo; Лента" href="https://pc-01.tech/feed/" />
+<link rel="alternate" type="application/rss+xml" title="PC-01 | Этот компьютер &raquo; Лента комментариев" href="https://pc-01.tech/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="PC-01 | Этот компьютер &raquo; Лента комментариев к &laquo;Как просто создать свой VPN (WireGuard VPN)&raquo;" href="https://pc-01.tech/wireguard-vpn/feed/" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/pc-01.tech\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.9.3"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://pc-01.tech/wp-includes/css/dist/block-library/style.min.css?ver=5.9.3' type='text/css' media='all' />
+<style id='wp-block-library-theme-inline-css' type='text/css'>
+.wp-block-audio figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-audio figcaption{color:hsla(0,0%,100%,.65)}.wp-block-code>code{font-family:Menlo,Consolas,monaco,monospace;color:#1e1e1e;padding:.8em 1em;border:1px solid #ddd;border-radius:4px}.wp-block-embed figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed figcaption{color:hsla(0,0%,100%,.65)}.blocks-gallery-caption{color:#555;font-size:13px;text-align:center}.is-dark-theme .blocks-gallery-caption{color:hsla(0,0%,100%,.65)}.wp-block-image figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-image figcaption{color:hsla(0,0%,100%,.65)}.wp-block-pullquote{border-top:4px solid;border-bottom:4px solid;margin-bottom:1.75em;color:currentColor}.wp-block-pullquote__citation,.wp-block-pullquote cite,.wp-block-pullquote footer{color:currentColor;text-transform:uppercase;font-size:.8125em;font-style:normal}.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;position:relative;font-style:normal}.wp-block-quote.has-text-align-right{border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote.has-text-align-center{border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large,.wp-block-quote.is-style-plain{border:none}.wp-block-search .wp-block-search__label{font-weight:700}.wp-block-group:where(.has-background){padding:1.25em 2.375em}.wp-block-separator{border:none;border-bottom:2px solid;margin-left:auto;margin-right:auto;opacity:.4}.wp-block-separator:not(.is-style-wide):not(.is-style-dots){width:100px}.wp-block-separator.has-background:not(.is-style-dots){border-bottom:none;height:1px}.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots){height:2px}.wp-block-table thead{border-bottom:3px solid}.wp-block-table tfoot{border-top:3px solid}.wp-block-table td,.wp-block-table th{padding:.5em;border:1px solid;word-break:normal}.wp-block-table figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-table figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-video figcaption{color:hsla(0,0%,100%,.65)}.wp-block-template-part.has-background{padding:1.25em 2.375em;margin-top:0;margin-bottom:0}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='jquery-smooth-scroll-css'  href='https://pc-01.tech/wp-content/plugins/jquery-smooth-scroll/css/style.css?ver=5.9.3' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-icomoon-css'  href='https://pc-01.tech/wp-content/plugins/easy-table-of-contents/vendor/icomoon/style.min.css?ver=2.0.17' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-toc-css'  href='https://pc-01.tech/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.17' type='text/css' media='all' />
+<style id='ez-toc-inline-css' type='text/css'>
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}
+</style>
+<link rel='stylesheet' id='evc-share-style-css'  href='https://pc-01.tech/wp-content/plugins/easy-vkontakte-connect/css/style-share.css?ver=5.9.3' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='https://pc-01.tech/wp-includes/css/dashicons.min.css?ver=5.9.3' type='text/css' media='all' />
+<link rel='stylesheet' id='hitmag-fonts-css'  href='https://fonts.googleapis.com/css?family=Ubuntu%3A400%2C500%2C700%7CLato%3A400%2C700%2C400italic%2C700italic%7COpen+Sans%3A400%2C400italic%2C700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='hitmag-font-awesome-css'  href='https://pc-01.tech/wp-content/themes/hitmag/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='hitmag-style-css'  href='https://pc-01.tech/wp-content/themes/hitmag/style.css?ver=5.9.3' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-flexslider-css'  href='https://pc-01.tech/wp-content/themes/hitmag/css/flexslider.css?ver=5.9.3' type='text/css' media='screen' />
+<link rel='stylesheet' id='jquery-magnific-popup-css'  href='https://pc-01.tech/wp-content/themes/hitmag/css/magnific-popup.css?ver=5.9.3' type='text/css' media='all' />
+<link rel='stylesheet' id='__EPYT__style-css'  href='https://pc-01.tech/wp-content/plugins/youtube-embed-plus/styles/ytprefs.min.css?ver=13.4.3' type='text/css' media='all' />
+<style id='__EPYT__style-inline-css' type='text/css'>
+
+                .epyt-gallery-thumb {
+                        width: 33.333%;
+                }
+                
+</style>
+<script type='text/javascript' src='https://pc-01.tech/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/plugins/easy-vkontakte-connect/js/jquery.cookie.js' id='jquery.cookie-js'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/themes/hitmag/js/html5shiv.min.js?ver=5.9.3' id='html5shiv-js'></script>
+<![endif]-->
+<script type='text/javascript' id='__ytprefs__-js-extra'>
+/* <![CDATA[ */
+var _EPYT_ = {"ajaxurl":"https:\/\/pc-01.tech\/wp-admin\/admin-ajax.php","security":"0b6a89560f","gallery_scrolloffset":"20","eppathtoscripts":"https:\/\/pc-01.tech\/wp-content\/plugins\/youtube-embed-plus\/scripts\/","eppath":"https:\/\/pc-01.tech\/wp-content\/plugins\/youtube-embed-plus\/","epresponsiveselector":"[\"iframe.__youtube_prefs__\",\"iframe[src*='youtube.com']\",\"iframe[src*='youtube-nocookie.com']\",\"iframe[data-ep-src*='youtube.com']\",\"iframe[data-ep-src*='youtube-nocookie.com']\",\"iframe[data-ep-gallerysrc*='youtube.com']\"]","epdovol":"1","version":"13.4.3","evselector":"iframe.__youtube_prefs__[src], iframe[src*=\"youtube.com\/embed\/\"], iframe[src*=\"youtube-nocookie.com\/embed\/\"]","ajax_compat":"","ytapi_load":"light","pause_others":"","stopMobileBuffer":"1","vi_active":"","vi_js_posttypes":[]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/plugins/youtube-embed-plus/scripts/ytprefs.min.js?ver=13.4.3' id='__ytprefs__-js'></script>
+<link rel="https://api.w.org/" href="https://pc-01.tech/wp-json/" /><link rel="alternate" type="application/json" href="https://pc-01.tech/wp-json/wp/v2/posts/5599" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://pc-01.tech/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://pc-01.tech/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.9.3" />
+<link rel='shortlink' href='https://pc-01.tech/?p=5599' />
+<link rel="alternate" type="application/json+oembed" href="https://pc-01.tech/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpc-01.tech%2Fwireguard-vpn%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://pc-01.tech/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpc-01.tech%2Fwireguard-vpn%2F&#038;format=xml" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href='https://fonts.googleapis.com/css2?display=swap&family=Roboto+Slab:wght@400;700' rel='stylesheet'>		<style type="text/css">
+			
+			button,
+			input[type="button"],
+			input[type="reset"],
+			input[type="submit"] {
+				background: #336699;
+			}
+
+            .th-readmore {
+                background: #336699;
+            }           
+
+            a:hover {
+                color: #336699;
+            } 
+
+            .main-navigation a:hover {
+                background-color: #336699;
+            }
+
+            .main-navigation .current_page_item > a,
+            .main-navigation .current-menu-item > a,
+            .main-navigation .current_page_ancestor > a,
+            .main-navigation .current-menu-ancestor > a {
+                background-color: #336699;
+            }
+
+            #main-nav-button:hover {
+                background-color: #336699;
+            }
+
+            .post-navigation .post-title:hover {
+                color: #336699;
+            }
+
+            .top-navigation a:hover {
+                color: #336699;
+            }
+
+            .top-navigation ul ul a:hover {
+                background: #336699;
+            }
+
+            #top-nav-button:hover {
+                color: #336699;
+            }
+
+            .responsive-mainnav li a:hover,
+            .responsive-topnav li a:hover {
+                background: #336699;
+            }
+
+            #hm-search-form .search-form .search-submit {
+                background-color: #336699;
+            }
+
+            .nav-links .current {
+                background: #336699;
+            }
+
+            .elementor-widget-container h5,
+            .widget-title {
+                border-bottom: 2px solid #336699;
+            }
+
+            .footer-widget-title {
+                border-bottom: 2px solid #336699;
+            }
+
+            .widget-area a:hover {
+                color: #336699;
+            }
+
+            .footer-widget-area .widget a:hover {
+                color: #336699;
+            }
+
+            .site-info a:hover {
+                color: #336699;
+            }
+
+            .search-form .search-submit {
+                background: #336699;
+            }
+
+            .hmb-entry-title a:hover {
+                color: #336699;
+            }
+
+            .hmb-entry-meta a:hover,
+            .hms-meta a:hover {
+                color: #336699;
+            }
+
+            .hms-title a:hover {
+                color: #336699;
+            }
+
+            .hmw-grid-post .post-title a:hover {
+                color: #336699;
+            }
+
+            .footer-widget-area .hmw-grid-post .post-title a:hover,
+            .footer-widget-area .hmb-entry-title a:hover,
+            .footer-widget-area .hms-title a:hover {
+                color: #336699;
+            }
+
+            .hm-tabs-wdt .ui-state-active {
+                border-bottom: 2px solid #336699;
+            }
+
+            a.hm-viewall {
+                background: #336699;
+            }
+
+            #hitmag-tags a,
+            .widget_tag_cloud .tagcloud a {
+                background: #336699;
+            }
+
+            .site-title a {
+                color: #336699;
+            }
+
+            .hitmag-post .entry-title a:hover {
+                color: #336699;
+            }
+
+            .hitmag-post .entry-meta a:hover {
+                color: #336699;
+            }
+
+            .cat-links a {
+                color: #336699;
+            }
+
+            .hitmag-single .entry-meta a:hover {
+                color: #336699;
+            }
+
+            .hitmag-single .author a:hover {
+                color: #336699;
+            }
+
+            .hm-author-content .author-posts-link {
+                color: #336699;
+            }
+
+            .hm-tags-links a:hover {
+                background: #336699;
+            }
+
+            .hm-tagged {
+                background: #336699;
+            }
+
+            .hm-edit-link a.post-edit-link {
+                background: #336699;
+            }
+
+            .arc-page-title {
+                border-bottom: 2px solid #336699;
+            }
+
+            .srch-page-title {
+                border-bottom: 2px solid #336699;
+            }
+
+            .hm-slider-details .cat-links {
+                background: #336699;
+            }
+
+            .hm-rel-post .post-title a:hover {
+                color: #336699;
+            }
+
+            .comment-author a {
+                color: #336699;
+            }
+
+            .comment-metadata a:hover,
+            .comment-metadata a:focus,
+            .pingback .comment-edit-link:hover,
+            .pingback .comment-edit-link:focus {
+                color: #336699;
+            }
+
+            .comment-reply-link:hover,
+            .comment-reply-link:focus {
+                background: #336699;
+            }
+
+            .required {
+                color: #336699;
+            }
+
+            blockquote {
+                border-left: 3px solid #336699;
+            }
+
+            .comment-reply-title small a:before {
+                color: #336699;
+            }
+            
+            .woocommerce ul.products li.product h3:hover,
+            .woocommerce-widget-area ul li a:hover,
+            .woocommerce-loop-product__title:hover {
+                color: #336699;
+            }
+
+            .woocommerce-product-search input[type="submit"],
+            .woocommerce #respond input#submit, 
+            .woocommerce a.button, 
+            .woocommerce button.button, 
+            .woocommerce input.button,
+            .woocommerce nav.woocommerce-pagination ul li a:focus,
+            .woocommerce nav.woocommerce-pagination ul li a:hover,
+            .woocommerce nav.woocommerce-pagination ul li span.current,
+            .woocommerce span.onsale,
+            .woocommerce-widget-area .widget-title,
+            .woocommerce #respond input#submit.alt,
+            .woocommerce a.button.alt,
+            .woocommerce button.button.alt,
+            .woocommerce input.button.alt {
+                background: #336699;
+            }
+            
+            .wp-block-quote,
+            .wp-block-quote:not(.is-large):not(.is-style-large) {
+                border-left: 3px solid #336699;
+            }		</style>
+	<link rel="pingback" href="https://pc-01.tech/xmlrpc.php">	<style type="text/css">
+
+			.site-title a,
+		.site-description {
+			position: absolute;
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+
+	
+	</style>
+	<meta property="vk:app_id" content="7266765" /><style type="text/css">
+    #overlay-sidebar {
+      width: 380px;
+      margin: 0 0 0 -190px;
+    }
+    #slide-sidebar {
+      width: 380px;
+      right:-423px; // width + 43px
+      bottom: 20px;
+    }
+  </style><script type="text/javascript">
+    var VKWidgetsGroup = [];
+    var VKWidgetsComments = [];
+    var VKWidgetsPolls = [];
+    var VKWidgetsSubscribe = [];
+    var VKWidgetsContactUs = [];
+    var VKWidgetsCommunityMessages = [];
+    var VKWidgets = [];
+    
+    var vkUnLock = [];
+    var subscribeCookieExpires = 1;
+    
+    if (typeof ajaxurl == "undefined")
+      ajaxurl = "https://pc-01.tech/wp-admin/admin-ajax.php";
+  
+    oTimeout = 5000;
+    oScreens = 0.75;
+    oCookieExpires = 365;
+    oAction = "timeout";
+    oSensitivity = 20;
+    oTop = "40px";
+
+    sTimeout = 5000;
+    sScreens = 0.75;
+    sCookieExpires = 365;
+    sAction = "scroll";
+    sSensitivity = 20;
+    sSpeed = 800;
+        
+  </script><script type="text/javascript">evc_post_id = 5599;</script>	<style id="egf-frontend-styles" type="text/css">
+		p {font-family: 'Roboto Slab', sans-serif;font-style: normal;font-weight: 400;} h1 {font-family: 'Roboto Slab', sans-serif;font-style: normal;font-weight: 400;} h2 {font-family: 'Roboto Slab', sans-serif;font-style: normal;font-weight: 700;} h3 {font-family: 'Roboto Slab', sans-serif;font-style: normal;font-weight: 700;} h4 {font-family: 'Roboto Slab', sans-serif;font-style: normal;font-weight: 700;} h5 {font-family: 'Roboto Slab', sans-serif;font-style: normal;font-weight: 700;border-bottom-style: none;} h6 {font-family: 'Roboto Slab', sans-serif;font-style: normal;font-weight: 700;} 	</style>
+	</head>
+
+<body class="post-template-default single single-post postid-5599 single-format-standard wp-custom-logo th-right-sidebar">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
+
+<div id="page" class="site hitmag-wrapper">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header" role="banner">
+
+		
+		
+		<div class="header-main-area ">
+			<div class="hm-container">
+			<div class="site-branding">
+				<div class="site-branding-content">
+					<div class="hm-logo">
+						<a href="https://pc-01.tech/" class="custom-logo-link" rel="home"><img width="487" height="99" src="https://pc-01.tech/wp-content/uploads/2019/11/cropped-logo3.-midpng.png" class="custom-logo" alt="PC-01 | Этот компьютер" srcset="https://pc-01.tech/wp-content/uploads/2019/11/cropped-logo3.-midpng.png 487w, https://pc-01.tech/wp-content/uploads/2019/11/cropped-logo3.-midpng-300x61.png 300w" sizes="(max-width: 487px) 100vw, 487px" /></a>					</div><!-- .hm-logo -->
+
+					<div class="hm-site-title">
+													<p class="site-title"><a href="https://pc-01.tech/" rel="home">PC-01 | Этот компьютер</a></p>
+													<p class="site-description">Компьютерные новости</p>
+											</div><!-- .hm-site-title -->
+				</div><!-- .site-branding-content -->
+			</div><!-- .site-branding -->
+
+			
+						</div><!-- .hm-container -->
+		</div><!-- .header-main-area -->
+
+		
+		<div class="hm-nav-container">
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<div class="hm-container">
+					<div class="menu-2-container"><ul id="primary-menu" class="menu"><li id="menu-item-28" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-28"><a href="http://pc-01.tech">Главная</a></li>
+<li id="menu-item-138" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-138"><a href="https://pc-01.tech/category/review/">Обзоры</a></li>
+<li id="menu-item-139" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139"><a href="https://pc-01.tech/category/24/">Статьи</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-140"><a href="https://pc-01.tech/category/tests/">Тесты</a></li>
+<li id="menu-item-767" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-767"><a href="https://pc-01.tech/category/news/">Новости</a></li>
+<li id="menu-item-5438" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5438"><a href="https://pc-01.tech/po/">ПО</a></li>
+<li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="https://www.youtube.com/channel/UCPKVp0M7Z3iTRdqC-nIm5ng">YouTube | Этот Компьютер</a></li>
+</ul></div>					
+											<div class="hm-search-button-icon"></div>
+						<div class="hm-search-box-container">
+							<div class="hm-search-box">
+								<form role="search" method="get" class="search-form" action="https://pc-01.tech/">
+				<label>
+					<span class="screen-reader-text">Найти:</span>
+					<input type="search" class="search-field" placeholder="Поиск&hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Поиск" />
+			</form>							</div><!-- th-search-box -->
+						</div><!-- .th-search-box-container -->
+									</div><!-- .hm-container -->
+			</nav><!-- #site-navigation -->
+			<div class="hm-nwrap">
+				<a href="#" class="navbutton" id="main-nav-button">Main Menu</a>
+			</div>
+			<div class="responsive-mainnav"></div>
+		</div><!-- .hm-nav-container -->
+
+		
+	</header><!-- #masthead -->
+
+	
+	<div id="content" class="site-content">
+		<div class="hm-container">
+	
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+<article id="post-5599" class="hitmag-single post-5599 post type-post status-publish format-standard has-post-thumbnail hentry category-tests tag-vpn">
+
+	
+	<header class="entry-header">
+		<div class="cat-links"><a href="https://pc-01.tech/category/tests/" rel="category tag">Тесты</a></div><h1 class="entry-title">Как просто создать свой VPN (WireGuard VPN)</h1>		<div class="entry-meta">
+			<span class="posted-on"><a href="https://pc-01.tech/wireguard-vpn/" rel="bookmark"><time class="entry-date published" datetime="2022-03-15T14:53:32+03:00">15.03.2022</time><time class="updated" datetime="2022-03-16T21:01:50+03:00">16.03.2022</time></a></span><span class="meta-sep"> - </span><span class="byline"> by <span class="author vcard"><a class="url fn n" href="https://pc-01.tech/author/djhfj54sd/">Павел Конюшков</a></span></span><span class="meta-sep"> - </span><span class="comments-link"><a href="https://pc-01.tech/wireguard-vpn/#respond">Leave a Comment</a></span>		</div><!-- .entry-meta -->
+		
+	</header><!-- .entry-header -->
+	
+	
+	
+	<div class="entry-content">
+		<div id="ez-toc-container" class="ez-toc-v2_0_17 counter-hierarchy ez-toc-grey">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">Содержание</p>
+<span class="ez-toc-title-toggle"><a class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" style="display: none;"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></a></span></div>
+<nav><ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-1" href="#%D0%A7%D1%82%D0%BE_%D0%BC%D1%8B_%D0%B1%D1%83%D0%B4%D0%B5%D0%BC_%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%B8%D0%B2%D0%B0%D1%82%D1%8C" title="Что мы будем настраивать?">Что мы будем настраивать?</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-2" href="#%D0%93%D0%B4%D0%B5_%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D1%8C_%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80_%D0%B7%D0%B0_%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B0%D0%BC%D0%B8_%D0%A0%D0%A4_%D1%81_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%BE%D0%B9_%D0%B2_%D1%80%D1%83%D0%B1%D0%BB%D1%8F%D1%85" title="Где арендовать виртуальный сервер за пределами РФ с оплатой в рублях">Где арендовать виртуальный сервер за пределами РФ с оплатой в рублях</a><ul class="ez-toc-list-level-5"><li class="ez-toc-heading-level-5"><ul class="ez-toc-list-level-5"><li class="ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-3" href="#RU_VDS" title="RU VDS">RU VDS</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-4" href="#veespcom" title="veesp.com">veesp.com</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-5" href="#G_Core_Labs" title="G Core Labs">G Core Labs</a></li></ul></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-6" href="#%D0%9A%D0%B0%D0%BA_%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%D1%81%D1%8F_%D0%BA_%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%BC%D1%83_%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D1%83" title="Как подключиться к арендованному серверу">Как подключиться к арендованному серверу</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-7" href="#%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0_%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B9_%D1%87%D0%B0%D1%81%D1%82%D0%B8_VPN_%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0_WireGuard" title="Настройка серверной части VPN. Установка WireGuard">Настройка серверной части VPN. Установка WireGuard</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-8" href="#%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0_%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D1%85_%D1%87%D0%B0%D1%81%D1%82%D0%B5%D0%B9" title="Настройка пользовательских частей">Настройка пользовательских частей</a><ul class="ez-toc-list-level-5"><li class="ez-toc-heading-level-5"><ul class="ez-toc-list-level-5"><li class="ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-9" href="#%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_Windows_%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BE%D0%B2_%D0%BA_%D0%B2%D0%B0%D1%88%D0%B5%D0%BC%D1%83_VPN" title="Подключение Windows компьютеров к вашему VPN">Подключение Windows компьютеров к вашему VPN</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-10" href="#%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D1%81%D0%BC%D0%B0%D1%80%D1%82%D1%84%D0%BE%D0%BD%D0%BE%D0%B2_%D0%BA_%D0%B2%D0%B0%D1%88%D0%B5%D0%BC%D1%83_VPN" title="Подключение смартфонов к вашему VPN">Подключение смартфонов к вашему VPN</a></li></ul></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-11" href="#%D0%9A%D0%BE%D1%80%D0%BE%D1%82%D0%BA%D0%BE_%D0%B2%D1%81%D1%91_%D0%B5%D1%89%D1%91_%D1%80%D0%B0%D0%B7" title="Коротко всё ещё раз">Коротко всё ещё раз</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-12" href="#%D0%92%D0%B0%D0%B6%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%B5%D0%B4%D0%BE%D1%81%D1%82%D0%B5%D1%80%D0%B5%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5" title="Важное предостережение">Важное предостережение</a></li></ul></nav></div>
+
+<h3><span class="ez-toc-section" id="%D0%A7%D1%82%D0%BE_%D0%BC%D1%8B_%D0%B1%D1%83%D0%B4%D0%B5%D0%BC_%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%B8%D0%B2%D0%B0%D1%82%D1%8C"></span>Что мы будем настраивать?<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>В этом материале я покажу как на арендованный виртуальный сервер поставить WireGuard. Это аналог OpenVPN, только со своими протоколами шифрования, он быстрее чем OpenVPN, имеет меньшие задержки и штраф по скорости туннелирования и настраивается проще, чем что либо ещё.</p><div class='code-block code-block-8' style='margin: 8px 0; clear: both;'>
+<!-- Yandex Native Ads -->
+<script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+<!-- Yandex Native Ads C-A-1645871-1 -->
+<div id="id-C-A-1645871-1"></div>
+<script>window.yaContextCb.push(()=>{
+  Ya.Context.AdvManager.renderWidget({
+    renderTo: 'id-C-A-1645871-1',
+    blockId: 'C-A-1645871-1'
+  })
+})</script>
+<ya-units-grid cols="${grid_columns}" rows="${grid_rows}">
+
+  <div class="unit-misc">
+    <ya-unit-kebab class="ya-unit-kebab_dark" />
+  </div>
+
+  <div class="unit-content">
+
+    <!-- Начало Шаблона ТГО -->
+    <ya-unit-if condition="!unit.isRmp">
+      <div class="unit-meta">
+        <ya-unit-category class="unit-category" />
+        <ya-unit-age class="unit-age" />
+      </div>
+
+      <div class="unit-image-block">
+        <ya-unit-image disable-disclaimer />
+      </div>
+
+      <div class="unit-text-content" data-cols="1" data-rows="1">
+
+        <div class="unit-title">
+          <ya-unit-if condition="unit.title < 22">
+            <span class="title-short">
+              <ya-clamp lines="3"><ya-unit-title /></ya-clamp>
+            </span>
+          </ya-unit-if>
+
+          <ya-unit-if condition="unit.title > 21 & unit.title < 37">
+            <span class="title-mid">
+              <ya-clamp lines="3"><ya-unit-title /></ya-clamp>
+            </span>
+          </ya-unit-if>
+
+          <ya-unit-if condition="unit.title > 36">
+            <span class="title-long">
+              <ya-clamp lines="3"><ya-unit-title /></ya-clamp>
+            </span>
+          </ya-unit-if>
+        </div>
+
+        <div class="unit-prices"><ya-unit-price /><ya-unit-old-price /></div>
+  
+        <div class="unit-desc">
+          <ya-clamp lines="2">
+            <ya-unit-desc class="desc" />
+          </ya-clamp>
+        </div>
+
+        <div class="unit-cta">
+          <div class="unit-domain">
+            <span class="unit-domain-no-wrap">
+              <span class="unit-favicon"><ya-unit-favicon size="32"/></span>
+              <ya-unit-domain class="domain"/>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </ya-unit-if>
+    <!-- Конец Шаблона ТГО -->
+
+
+    
+    <!-- Начало Шаблона РМП -->
+    <ya-unit-if condition="unit.isRmp">
+
+      <div class="unit-image-block">
+        <ya-unit-app-icon />
+      </div>
+
+      <div class="unit-text-content unit-rmp-content" data-cols="1" data-rows="1">
+
+        <div class="unit-title">
+          <span class="title-rmp">
+            <ya-clamp lines="2"><ya-unit-title /></ya-clamp>
+          </span>
+        </div>
+
+        <div class="unit-app-name">
+          <ya-clamp lines="1">
+            <ya-unit-app-name />
+          </ya-clamp>
+        </div>
+
+        <div class="unit-app-rating">
+          <ya-unit-rating />
+          <ya-unit-review-count />
+          <div class="unit-meta">
+            <ya-unit-category class="unit-category" />
+            <ya-unit-age class="unit-age" />
+          </div>
+        </div>
+
+        <div class="unit-cta">
+          <div class="unit-domain">
+            <ya-unit-mobile-app-button />
+          </div>
+        </div>
+  
+      </div>
+
+    </ya-unit-if>
+    <!-- Конец Шаблона РМП -->
+
+  </div>
+</ya-units-grid></div>
+
+
+
+
+<p>Но и для openVPN и для WireGuard начало работы одинаковое.</p>
+
+
+
+<p>Нужно найти место где вы будите брать в аренду виртуальный сервер.</p>
+
+
+
+<h3><span class="ez-toc-section" id="%D0%93%D0%B4%D0%B5_%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D1%8C_%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80_%D0%B7%D0%B0_%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B0%D0%BC%D0%B8_%D0%A0%D0%A4_%D1%81_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%BE%D0%B9_%D0%B2_%D1%80%D1%83%D0%B1%D0%BB%D1%8F%D1%85"></span>Где арендовать виртуальный сервер за пределами РФ с оплатой в рублях<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Если у вас есть иностранные VISA или Mastercard, то самое простое &#8212; это взять в аренду виртуальный сервер в <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer noopener">DigitalOcean</a>.</p>
+
+
+
+<p>Но пока что надёжных обходных методов регистрации иностранных карт я не нашёл, так что будем рассматривать только то, что доступно при оплате картами из РФ.</p>
+
+
+
+<p>Потратив минут <a href="https://poiskvps.ru" target="_blank" rel="noreferrer noopener">20 времени</a> я нашёл три сервиса по аренде виртуальных серверов за пределами РФ с оплатой нашими недокартами в рублях.</p>
+
+
+
+<h5><span class="ez-toc-section" id="RU_VDS"></span><a href="https://ruvds.com/pr6234" target="_blank" rel="noreferrer noopener">RU VDS</a><span class="ez-toc-section-end"></span></h5>
+
+
+
+<p>Самый дорогой из трёх сервисов &#8212; это <a href="https://ruvds.com/pr6234" target="_blank" rel="noreferrer noopener">RU VDS</a>. Минимальная комплектация около 550 рублей в месяц (есть скидка 5% по промокоду SAD-BQN-ABA, FVS-BJJ-KXO, GBV-TJW-BFT, QWN-KMC-QQI, UXD-XIF-KTD, LIV-KHI-SUG, VDV-JBD-KIO, JHN-UKP-IEQ, DCM-BBJ-XJB, KDA-HOC-NQA промокоды, к сожалению, одноразовые. Я их периодически обновляю). Но я этот сервис не выбрал для вас, так как пока я готовил материал у него из доступности к размещению пропали варианты в Германии и Нидерландах (на момент публикации они были вновь доступны). Возможно зарубежные мощности на пределах возможного и наплыв новых пользователей будет проблемным.</p>
+
+
+
+<figure class="wp-block-image size-large"><img width="1024" height="576" src="https://pc-01.tech/wp-content/uploads/2022/03/001-ruvds-1024x576.png" alt="" class="wp-image-5601" srcset="https://pc-01.tech/wp-content/uploads/2022/03/001-ruvds-1024x576.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/001-ruvds-300x169.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/001-ruvds-768x432.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/001-ruvds-1536x864.png 1536w, https://pc-01.tech/wp-content/uploads/2022/03/001-ruvds.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Доступны не все сервера</figcaption></figure>
+
+
+
+<h5><span class="ez-toc-section" id="veespcom"></span><a href="https://secure.veesp.com/?affid=744" target="_blank" rel="noreferrer noopener">veesp.com</a><span class="ez-toc-section-end"></span></h5>
+
+
+
+<p>Второй сервис чуть дешевле. И я заранее ещё связался с этим сервисом, так что вам ещё есть промокод (<strong>90LHJT906Q9W</strong> &#8212; скидка 5%).&nbsp;</p>
+
+
+
+<p>Это сервис <a href="https://secure.veesp.com/?affid=744" target="_blank" rel="noreferrer noopener">veesp.com</a>. </p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="576" src="https://pc-01.tech/wp-content/uploads/2022/03/002--1024x576.png" alt="" class="wp-image-5602" srcset="https://pc-01.tech/wp-content/uploads/2022/03/002--1024x576.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/002--300x169.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/002--768x432.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/002--1536x864.png 1536w, https://pc-01.tech/wp-content/uploads/2022/03/002-.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Забегая вперёд скажу, что я буду показывать на примере этого варианта. Юридически он находится в Латвии, что не ограничивает возможности по расширению доступных мощностей в будущем из-за санкций на покупку оборудования, но при этом ориентирован на русскоязычных пользователей и компании, то есть имеется русскоязычная поддержка, и возможности оплаты любыми нашими картами. И сами сервера находятся в России и в Латвии, что максимально близко к России, а значит обеспечат минимальный пинг, и кроме того в Латвии достаточно много русскоязычных пользователей, чтобы, например, в кешах гугла, быстро дублировались видео на русском языке. То есть для просмотра ютуба сервера в Латвии &#8212; это один из наиболее оптимальных вариантов.</p>
+
+
+
+<p>Если купить сразу на год, то с учётом скидки выходит примерно 3,5 доллара в месяц. Если купить просто на месяц то выходит около 4-х долларов.</p>
+
+
+
+<h5><span class="ez-toc-section" id="G_Core_Labs"></span>G Core Labs<span class="ez-toc-section-end"></span></h5>
+
+
+
+<p>И третий вариант, что я нашёл &#8212; это <a href="https://gcorelabs.com/" target="_blank" rel="noreferrer noopener">G Core Labs</a>. Самый дешёвый вариант. Тут есть возможность взять в аренду более слабые конфигурации, чем в двух других, и, соответственно ниже и цена, но этой конфигурации тоже вполне себе будет достаточно. </p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="576" src="https://pc-01.tech/wp-content/uploads/2022/03/003-lb-rjh-kfc-1024x576.png" alt="" class="wp-image-5603" srcset="https://pc-01.tech/wp-content/uploads/2022/03/003-lb-rjh-kfc-1024x576.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/003-lb-rjh-kfc-300x169.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/003-lb-rjh-kfc-768x432.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/003-lb-rjh-kfc-1536x864.png 1536w, https://pc-01.tech/wp-content/uploads/2022/03/003-lb-rjh-kfc.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>В Польше или Румынии можно арендовать виртуальный сервер меньше, чем за 300 рублей в месяц.</p>
+
+
+
+<p>Вы можете и сами ещё поискать других хостеров. Уверен можно нарыть не один десяток вариантов, а если у вас есть возможность использовать работающие виза или мастеркард, то вариантов сотни, если не тысячи.</p>
+
+
+
+<p>В любом случае по сервисам где вы будете арендовать виртуальный сервер разница только в том, что в части сервисов вам данные для первичного залогинивания придут на указанную электронную почту, а в части их нужно будет посмотреть в личном кабинете на сайте.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="745" src="https://pc-01.tech/wp-content/uploads/2022/03/004--1024x745.png" alt="" class="wp-image-5604" srcset="https://pc-01.tech/wp-content/uploads/2022/03/004--1024x745.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/004--300x218.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/004--768x559.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/004-.png 1158w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>И на покупаемом виртуальном сервере должна быть возможность автоматического развертывания каких-то современных Linux дистрибутивов. Обычно это будет Ubuntu (VPS где такой возможности нет я в принципе не встречал).</p>
+
+
+
+<p>Больше разницы никакой нет. Надо только смотреть на то, чтобы у выбранного тарифа для виртуального сервера не было ограничений по трафику. По производительности хватит чего угодно, берите просто самое дешёвое, что доступно.</p>
+
+
+
+<h3><span class="ez-toc-section" id="%D0%9A%D0%B0%D0%BA_%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%D1%81%D1%8F_%D0%BA_%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%BC%D1%83_%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D1%83"></span>Как подключиться к арендованному серверу<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Если у вас Windows 10 или 11, MAC и Linux, то там вы можете начать подключение используя встроенную командную строку или терминал. Если у вас Windows 7, то вам понадобится сторонний терминал с поддержкой SSH.</p>
+
+
+
+<p>Например <a href="https://putty.org.ru/download.html" target="_blank" rel="noreferrer noopener">PuTTY</a>.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="809" height="809" src="https://pc-01.tech/wp-content/uploads/2022/03/005-edited-1.png" alt="" class="wp-image-5607" srcset="https://pc-01.tech/wp-content/uploads/2022/03/005-edited-1.png 809w, https://pc-01.tech/wp-content/uploads/2022/03/005-edited-1-300x300.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/005-edited-1-150x150.png 150w, https://pc-01.tech/wp-content/uploads/2022/03/005-edited-1-768x768.png 768w" sizes="(max-width: 809px) 100vw, 809px" /></figure>
+
+
+
+<p>Несмотря на то, что я показываю на Windows 10 я его тоже поставил, так как в нём можно сохранить параметры для входа, что в будущем упростит работу.</p>
+
+
+
+<p>Скачиваете его и запускаете.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="515" src="https://pc-01.tech/wp-content/uploads/2022/03/006-IP--1024x515.png" alt="" class="wp-image-5608" srcset="https://pc-01.tech/wp-content/uploads/2022/03/006-IP--1024x515.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/006-IP--300x151.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/006-IP--768x386.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/006-IP--1536x772.png 1536w, https://pc-01.tech/wp-content/uploads/2022/03/006-IP-.png 1635w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<ol><li>В окно имя хоста копируете IP адрес того сервера, что взяли в аренду.</li><li>Придумайте название</li><li>Сохраните запись</li><li>Нажмите кнопку соединиться</li></ol>
+
+
+
+<p>При первом соединении возникнет всплывающее окно. В нём нажимаете &#171;ок&#187;.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="424" height="262" src="https://pc-01.tech/wp-content/uploads/2022/03/007-cjhfytybt.png" alt="" class="wp-image-5609" srcset="https://pc-01.tech/wp-content/uploads/2022/03/007-cjhfytybt.png 424w, https://pc-01.tech/wp-content/uploads/2022/03/007-cjhfytybt-300x185.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/007-cjhfytybt-348x215.png 348w" sizes="(max-width: 424px) 100vw, 424px" /></figure>
+
+
+
+<p>Далее откроется терминал, который будет ждать от вас залогинивания.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="630" height="330" src="https://pc-01.tech/wp-content/uploads/2022/03/008-login.png" alt="" class="wp-image-5610" srcset="https://pc-01.tech/wp-content/uploads/2022/03/008-login.png 630w, https://pc-01.tech/wp-content/uploads/2022/03/008-login-300x157.png 300w" sizes="(max-width: 630px) 100vw, 630px" /></figure>
+
+
+
+<p>В качестве логина вводите Root</p>
+
+
+
+<pre class="wp-block-preformatted">root</pre>
+
+
+
+<p>Пароль должен быть в сведениях о арендованном сервере.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="492" src="https://pc-01.tech/wp-content/uploads/2022/03/009--1024x492.png" alt="" class="wp-image-5613" srcset="https://pc-01.tech/wp-content/uploads/2022/03/009--1024x492.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/009--300x144.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/009--768x369.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/009-.png 1522w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Его нужно скопировать в буфер обмена в том месте где он у вас записан и далее в окне терминала нажать правую клавишу мыши, он вставится, но внешне отображаться не будет. Далее нажимайте &#171;enter&#187; и если вы сделали всё правильно, то вас залогинен на арендуемый сервер</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="618" height="321" src="https://pc-01.tech/wp-content/uploads/2022/03/010-.png" alt="" class="wp-image-5614" srcset="https://pc-01.tech/wp-content/uploads/2022/03/010-.png 618w, https://pc-01.tech/wp-content/uploads/2022/03/010--300x156.png 300w" sizes="(max-width: 618px) 100vw, 618px" /></figure>
+
+
+
+<p>Далее вы можете сменить пароль введя команду: passwd</p>
+
+
+
+<pre class="wp-block-preformatted">passwd</pre>
+
+
+
+<p>И далее дважды ввести новый пароль</p>
+
+
+
+<p>Пароль внешне так же не будет отображаться в терминале</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="615" height="636" src="https://pc-01.tech/wp-content/uploads/2022/03/011-.png" alt="" class="wp-image-5615" srcset="https://pc-01.tech/wp-content/uploads/2022/03/011-.png 615w, https://pc-01.tech/wp-content/uploads/2022/03/011--290x300.png 290w" sizes="(max-width: 615px) 100vw, 615px" /></figure>
+
+
+
+<p>Всё. теперь вы на своём сервере. И можете отдавать ему нужные для дальнейшей работы команды.</p>
+
+
+
+<h3><span class="ez-toc-section" id="%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0_%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B9_%D1%87%D0%B0%D1%81%D1%82%D0%B8_VPN_%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0_WireGuard"></span>Настройка серверной части VPN. Установка WireGuard<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Необходимо загрузить требуемые пакеты WireGuard и сконфигурировать их на сервере. И несмотря на то, что это простой процесс &#8212; его ещё можно упростить используя сторонние скрипты, направленные на то, чтобы настройка производилась не текстовыми командами, а в диалоговом режиме, ну то есть чтобы было &#171;далее, далее, ок, ок, ок, готово&#187;. Кроме того есть скрипты которые упростят создание новых пользователей, чтобы не надо было прописывать создание ключей и всего такого, а всё делалось в одну команду.</p>
+
+
+
+<p>И эти скрипты надо скачать.</p>
+
+
+
+<p>Я предлагаю использовать то, что было собрано для удобного развёртывания VPN на <a href="https://pivpn.io/" target="_blank" rel="noreferrer noopener">разбери пай</a>. И в дальнейшем к управлению и настройке WireGuard нужно будет обращаться через команду &#171;pivpn&#187;.</p>
+
+
+
+<p>Но для начала нужно скачать пакеты</p>
+
+
+
+<p>Для этого надо ввести последовательно две команды:</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="663" src="https://pc-01.tech/wp-content/uploads/2022/03/012-1024x663.png" alt="" class="wp-image-5616" srcset="https://pc-01.tech/wp-content/uploads/2022/03/012-1024x663.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/012-300x194.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/012-768x497.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/012.png 1069w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="616" height="639" src="https://pc-01.tech/wp-content/uploads/2022/03/013.png" alt="" class="wp-image-5617" srcset="https://pc-01.tech/wp-content/uploads/2022/03/013.png 616w, https://pc-01.tech/wp-content/uploads/2022/03/013-289x300.png 289w" sizes="(max-width: 616px) 100vw, 616px" /></figure>
+
+
+
+<pre class="wp-block-preformatted">apt install curl</pre>
+
+
+
+<p>Первая установится быстрее. Как закончит вводите вторую. </p>
+
+
+
+<p>Текст второй команды:</p>
+
+
+
+<pre class="wp-block-preformatted">curl -L https://install.pivpn.io | bash</pre>
+
+
+
+<p>Там надо будет ещё нажать &#171;Y&#187; для согласия.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="624" height="646" src="https://pc-01.tech/wp-content/uploads/2022/03/014.png" alt="" class="wp-image-5618" srcset="https://pc-01.tech/wp-content/uploads/2022/03/014.png 624w, https://pc-01.tech/wp-content/uploads/2022/03/014-290x300.png 290w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>Начнется установка в процессе которой возникнет диалоговое окно для конфигурирования.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="623" height="644" src="https://pc-01.tech/wp-content/uploads/2022/03/015.png" alt="" class="wp-image-5619" srcset="https://pc-01.tech/wp-content/uploads/2022/03/015.png 623w, https://pc-01.tech/wp-content/uploads/2022/03/015-290x300.png 290w" sizes="(max-width: 623px) 100vw, 623px" /></figure>
+
+
+
+<p>В нём вам надо энтером нажимать ok ok ok до ввода имени пользователя и пароля (большую часть окон я в виде картинок не привожу, показываю только то где надо что-то делать). Если где-то зафакапились, то перезапустить процесс настройки можно продублировав вторую из двух команд.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="619" height="643" src="https://pc-01.tech/wp-content/uploads/2022/03/016.png" alt="" class="wp-image-5620" srcset="https://pc-01.tech/wp-content/uploads/2022/03/016.png 619w, https://pc-01.tech/wp-content/uploads/2022/03/016-289x300.png 289w" sizes="(max-width: 619px) 100vw, 619px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="611" height="633" src="https://pc-01.tech/wp-content/uploads/2022/03/017.png" alt="" class="wp-image-5621" srcset="https://pc-01.tech/wp-content/uploads/2022/03/017.png 611w, https://pc-01.tech/wp-content/uploads/2022/03/017-290x300.png 290w" sizes="(max-width: 611px) 100vw, 611px" /></figure>
+
+
+
+<p>Дальше вам нужно выбрать что вы хотите поставить WireGuard или OpenVPN.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="610" height="634" src="https://pc-01.tech/wp-content/uploads/2022/03/018.png" alt="" class="wp-image-5622" srcset="https://pc-01.tech/wp-content/uploads/2022/03/018.png 610w, https://pc-01.tech/wp-content/uploads/2022/03/018-289x300.png 289w" sizes="(max-width: 610px) 100vw, 610px" /></figure>
+
+
+
+<p>Между показом окон иногда будут отрабатывать команды, которые генерируются скриптом на основе ваших ответов.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="610" height="634" src="https://pc-01.tech/wp-content/uploads/2022/03/019.png" alt="" class="wp-image-5623" srcset="https://pc-01.tech/wp-content/uploads/2022/03/019.png 610w, https://pc-01.tech/wp-content/uploads/2022/03/019-289x300.png 289w" sizes="(max-width: 610px) 100vw, 610px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="592" height="604" src="https://pc-01.tech/wp-content/uploads/2022/03/020-.png" alt="" class="wp-image-5624" srcset="https://pc-01.tech/wp-content/uploads/2022/03/020-.png 592w, https://pc-01.tech/wp-content/uploads/2022/03/020--294x300.png 294w" sizes="(max-width: 592px) 100vw, 592px" /><figcaption>Выбор порта, оставляйте как есть, если не знаете зачем вам нужно иное</figcaption></figure>
+
+
+
+<p>Далее вам надо выбрать DNS сервер. </p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="594" height="601" src="https://pc-01.tech/wp-content/uploads/2022/03/021.png" alt="" class="wp-image-5625" srcset="https://pc-01.tech/wp-content/uploads/2022/03/021.png 594w, https://pc-01.tech/wp-content/uploads/2022/03/021-297x300.png 297w" sizes="(max-width: 594px) 100vw, 594px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="592" height="600" src="https://pc-01.tech/wp-content/uploads/2022/03/022.png" alt="" class="wp-image-5626" srcset="https://pc-01.tech/wp-content/uploads/2022/03/022.png 592w, https://pc-01.tech/wp-content/uploads/2022/03/022-296x300.png 296w" sizes="(max-width: 592px) 100vw, 592px" /></figure>
+
+
+
+<p>Тут можно выбрать по сути любой, так как в списке более менее надёжные и чистые по фильтрации и блокировкам DNS сервера.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="548" height="291" src="https://pc-01.tech/wp-content/uploads/2022/03/023.png" alt="" class="wp-image-5627" srcset="https://pc-01.tech/wp-content/uploads/2022/03/023.png 548w, https://pc-01.tech/wp-content/uploads/2022/03/023-300x159.png 300w" sizes="(max-width: 548px) 100vw, 548px" /></figure>
+
+
+
+<p>Далее опять соглашаетесь на всё, что предлагает установщик.</p>
+
+
+
+<p>После завершения установки разрешаете установщику перезагрузить ваш сервер.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="530" height="254" src="https://pc-01.tech/wp-content/uploads/2022/03/025.png" alt="" class="wp-image-5629" srcset="https://pc-01.tech/wp-content/uploads/2022/03/025.png 530w, https://pc-01.tech/wp-content/uploads/2022/03/025-300x144.png 300w" sizes="(max-width: 530px) 100vw, 530px" /></figure>
+
+
+
+<p>Далее немного подождите и в окне в контекстном меню выбираете перезапустить сеанс, либо можно подольше подождать и оно само попробует переподключиться.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="612" height="633" src="https://pc-01.tech/wp-content/uploads/2022/03/026.png" alt="" class="wp-image-5630" srcset="https://pc-01.tech/wp-content/uploads/2022/03/026.png 612w, https://pc-01.tech/wp-content/uploads/2022/03/026-290x300.png 290w" sizes="(max-width: 612px) 100vw, 612px" /></figure>
+
+
+
+<p>Далее вам надо будет по новой залогиниться под рутом.</p>
+
+
+
+<p>С паролем который вы создали в самом начале. главное не забыть пароль. Как вы видите я свой созданный 5 минут назад пароль вспомнил только с третьего раза.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="595" height="632" src="https://pc-01.tech/wp-content/uploads/2022/03/027.png" alt="" class="wp-image-5631" srcset="https://pc-01.tech/wp-content/uploads/2022/03/027.png 595w, https://pc-01.tech/wp-content/uploads/2022/03/027-282x300.png 282w" sizes="(max-width: 595px) 100vw, 595px" /></figure>
+
+
+
+<p>Всё. Серверная часть готова.</p>
+
+
+
+<p>Ваш VPN уже работает. Остаётся разобраться как к нему подключать устройства.</p>
+
+
+
+<h3><span class="ez-toc-section" id="%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0_%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D1%85_%D1%87%D0%B0%D1%81%D1%82%D0%B5%D0%B9"></span>Настройка пользовательских частей<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Для этого нужно насоздавать новых пользователей.</p>
+
+
+
+<p>Для этого введите команду pivpn add и нажимаете enter.</p>
+
+
+
+<pre class="wp-block-preformatted">pivpn add</pre>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="322" height="47" src="https://pc-01.tech/wp-content/uploads/2022/03/028.png" alt="" class="wp-image-5634" srcset="https://pc-01.tech/wp-content/uploads/2022/03/028.png 322w, https://pc-01.tech/wp-content/uploads/2022/03/028-300x44.png 300w" sizes="(max-width: 322px) 100vw, 322px" /></figure>
+
+
+
+<p>Далее в терминале нужно вписать имя пользователя и ещё раз enter.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="546" height="172" src="https://pc-01.tech/wp-content/uploads/2022/03/029.png" alt="" class="wp-image-5635" srcset="https://pc-01.tech/wp-content/uploads/2022/03/029.png 546w, https://pc-01.tech/wp-content/uploads/2022/03/029-300x95.png 300w" sizes="(max-width: 546px) 100vw, 546px" /></figure>
+
+
+
+<p>Для этого имени создается конфигурационный файл. В нём находятся все сведения необходимые для подключения к вашему VPN.</p>
+
+
+
+<p>Для десктопов этот конфигурационный файл нужно скачать, чтобы загрузить его в клиент WireGuard на компьютере.</p>
+
+
+
+<p>Для телефонов можно генерировать qr код.</p>
+
+
+
+<h5><span class="ez-toc-section" id="%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_Windows_%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BE%D0%B2_%D0%BA_%D0%B2%D0%B0%D1%88%D0%B5%D0%BC%D1%83_VPN"></span>Подключение Windows компьютеров к вашему VPN<span class="ez-toc-section-end"></span></h5>
+
+
+
+<p>Рассмотрим случай когда вы хотите подключить компьютер на Windows.</p>
+
+
+
+<p>Для этого для начала нужно с <a href="https://www.wireguard.com/install/" target="_blank" rel="noreferrer noopener">официального сайта WireGuard скачать</a> и установить клиент.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="526" src="https://pc-01.tech/wp-content/uploads/2022/03/030-1024x526.png" alt="" class="wp-image-5636" srcset="https://pc-01.tech/wp-content/uploads/2022/03/030-1024x526.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/030-300x154.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/030-768x395.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/030.png 1208w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>И в программе вы увидите, что вам нужен конфигурационный файл, который сейчас лежит на вашем арендом сервере. </p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="625" height="499" src="https://pc-01.tech/wp-content/uploads/2022/03/031.png" alt="" class="wp-image-5637" srcset="https://pc-01.tech/wp-content/uploads/2022/03/031.png 625w, https://pc-01.tech/wp-content/uploads/2022/03/031-300x240.png 300w" sizes="(max-width: 625px) 100vw, 625px" /></figure>
+
+
+
+<p>Соответственно вам нужно этот файл скачать с сервера.</p>
+
+
+
+<p>На самом деле так как сервер ваш, то вы кроме WireGuard можете его использовать и как хранилище, и установить на него чего-нибудь для удобного файлообмена. Поднять FTP сервер не сложнее, чем настроить WireGuard. Но если вам этого не надо, то скачать файл конфигурации можно и через терминал.</p>
+
+
+
+<p>Файл конфигураций был создан в директории Home/VPN/configs</p>
+
+
+
+<p>Если вы забыли как назвали пользователя или не уверены, что создали всё правильно, то можно проверить наличие созданных на сервере файлов конфигураций:</p>
+
+
+
+<p>Для этого надо ввести команду:</p>
+
+
+
+<pre class="wp-block-preformatted">cd /Home/VPN/configs</pre>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="273" height="27" src="https://pc-01.tech/wp-content/uploads/2022/03/032.png" alt="" class="wp-image-5639"/></figure>
+
+
+
+<p>Путь можно скопировать из прошлого сообщения отработавшего pivpn add.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="542" height="155" src="https://pc-01.tech/wp-content/uploads/2022/03/033.png" alt="" class="wp-image-5640" srcset="https://pc-01.tech/wp-content/uploads/2022/03/033.png 542w, https://pc-01.tech/wp-content/uploads/2022/03/033-300x86.png 300w" sizes="(max-width: 542px) 100vw, 542px" /></figure>
+
+
+
+<p>Для этого надо выделить нужный текст и нажать правую клавишу мышки.</p>
+
+
+
+<p>У вас покажется введённый путь в новой стоке, что говорит о том, что вы сейчас дальше должны терминалу сказать что вы от него хотите в этой папке.</p>
+
+
+
+<p>Вводите туда ls, чтобы вам показался список файлов.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="572" height="211" src="https://pc-01.tech/wp-content/uploads/2022/03/034.png" alt="" class="wp-image-5641" srcset="https://pc-01.tech/wp-content/uploads/2022/03/034.png 572w, https://pc-01.tech/wp-content/uploads/2022/03/034-300x111.png 300w" sizes="(max-width: 572px) 100vw, 572px" /></figure>
+
+
+
+<p>Убеждаетесь что файл конфигурации нужного пользователя создался.</p>
+
+
+
+<p>Далее его надо скачать.</p>
+
+
+
+<p>Я покажу как это делать на Windows 10 или новее.</p>
+
+
+
+<p>На Windows 7 нужно скачать от туда где брали PuTTY ещё программу <a href="https://putty.org.ru/download.html" target="_blank" rel="noreferrer noopener">PSCP</a> и записать её в C/Windows/System32. Далее для Windows 7 всё также как в Windows 10 за исключением того, что в дальнейшей команде в Windows 10 будет scp, а в Windows 7 pscp, так как в семёрке надо обратиться к скаченному экзешнику, а в десятке &#8212; к стандартному приложению scp.</p>
+
+
+
+<p>Я буду показывать для Windows 10.</p>
+
+
+
+<p>Запускаете <a href="https://ichip.ru/sovety/ekspluataciya/kak-zapustit-komandnuyu-stroku-v-windows-4-prostyh-sposoba-777532" target="_blank" rel="noreferrer noopener">командную строку</a>.</p>
+
+
+
+<p>Вводите команду scp пробел root@%ip_ad%:/Home/VPN/configs/%conf_name%.conf пробел .</p>
+
+
+
+<pre class="wp-block-preformatted">scp root@0.0.0.0:/Home/VPN/configs/%conf_name%.conf . (для Windows 10/11)
+pscp root@0.0.0.0:/Home/VPN/configs/%conf_name%.conf . (для Windows 7 с установленным pscp)
+//вместо 0.0.0.0 - ip Адрес вашего сервера
+//вместо %conf_name% - название конфигурации, которую надо скачать</pre>
+
+
+
+<p>Нажимаете Enter. При первом подключении может возникнуть сообщение на которое нужно будет ввести yes и Enter.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="551" height="140" src="https://pc-01.tech/wp-content/uploads/2022/03/035.png" alt="" class="wp-image-5644" srcset="https://pc-01.tech/wp-content/uploads/2022/03/035.png 551w, https://pc-01.tech/wp-content/uploads/2022/03/035-300x76.png 300w" sizes="(max-width: 551px) 100vw, 551px" /></figure>
+
+
+
+<p>Далее вам надо будет ввести пароль от вашего сервера после чего файл скачается.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="547" height="143" src="https://pc-01.tech/wp-content/uploads/2022/03/036.png" alt="" class="wp-image-5645" srcset="https://pc-01.tech/wp-content/uploads/2022/03/036.png 547w, https://pc-01.tech/wp-content/uploads/2022/03/036-300x78.png 300w" sizes="(max-width: 547px) 100vw, 547px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="867" height="158" src="https://pc-01.tech/wp-content/uploads/2022/03/037.png" alt="" class="wp-image-5646" srcset="https://pc-01.tech/wp-content/uploads/2022/03/037.png 867w, https://pc-01.tech/wp-content/uploads/2022/03/037-300x55.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/037-768x140.png 768w" sizes="(max-width: 867px) 100vw, 867px" /></figure>
+
+
+
+<p>Скачается он в папку пользователя. Ну то есть заходите в компьютер, диск С, пользователи, там ваш пользователь и там будет лежать файлик.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="740" height="523" src="https://pc-01.tech/wp-content/uploads/2022/03/038.png" alt="" class="wp-image-5647" srcset="https://pc-01.tech/wp-content/uploads/2022/03/038.png 740w, https://pc-01.tech/wp-content/uploads/2022/03/038-300x212.png 300w" sizes="(max-width: 740px) 100vw, 740px" /></figure>
+
+
+
+<p>Далее в клиенте WireGuard даём путь к этому файлу и жмём подключить.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="588" src="https://pc-01.tech/wp-content/uploads/2022/03/039-1024x588.png" alt="" class="wp-image-5648" srcset="https://pc-01.tech/wp-content/uploads/2022/03/039-1024x588.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/039-300x172.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/039-768x441.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/039.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="980" height="579" src="https://pc-01.tech/wp-content/uploads/2022/03/040.png" alt="" class="wp-image-5649" srcset="https://pc-01.tech/wp-content/uploads/2022/03/040.png 980w, https://pc-01.tech/wp-content/uploads/2022/03/040-300x177.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/040-768x454.png 768w" sizes="(max-width: 980px) 100vw, 980px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="678" height="536" src="https://pc-01.tech/wp-content/uploads/2022/03/041.png" alt="" class="wp-image-5650" srcset="https://pc-01.tech/wp-content/uploads/2022/03/041.png 678w, https://pc-01.tech/wp-content/uploads/2022/03/041-300x237.png 300w" sizes="(max-width: 678px) 100vw, 678px" /></figure>
+
+
+
+<p>Всё. Клиентская часть VPN тоже работает.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="664" height="528" src="https://pc-01.tech/wp-content/uploads/2022/03/042.png" alt="" class="wp-image-5651" srcset="https://pc-01.tech/wp-content/uploads/2022/03/042.png 664w, https://pc-01.tech/wp-content/uploads/2022/03/042-300x239.png 300w" sizes="(max-width: 664px) 100vw, 664px" /></figure>
+
+
+
+<p>Можно включать и выключать быстро и без затупов, больше ничего настраивать никогда не придётся. Каждый раз у вас будет доступ именно к вашему серверу.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="658" src="https://pc-01.tech/wp-content/uploads/2022/03/043-1024x658.png" alt="" class="wp-image-5652" srcset="https://pc-01.tech/wp-content/uploads/2022/03/043-1024x658.png 1024w, https://pc-01.tech/wp-content/uploads/2022/03/043-300x193.png 300w, https://pc-01.tech/wp-content/uploads/2022/03/043-768x494.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/043.png 1489w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>У меня родной интернет 100 Мбит/с, так что насколько быстрый арендованный сервер я сказать не могу, но на загрузку он быстрее, чем мой домашний интернет.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="741" height="778" src="https://pc-01.tech/wp-content/uploads/2022/03/044.png" alt="" class="wp-image-5653" srcset="https://pc-01.tech/wp-content/uploads/2022/03/044.png 741w, https://pc-01.tech/wp-content/uploads/2022/03/044-286x300.png 286w" sizes="(max-width: 741px) 100vw, 741px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="730" height="370" src="https://pc-01.tech/wp-content/uploads/2022/03/045.png" alt="" class="wp-image-5654" srcset="https://pc-01.tech/wp-content/uploads/2022/03/045.png 730w, https://pc-01.tech/wp-content/uploads/2022/03/045-300x152.png 300w" sizes="(max-width: 730px) 100vw, 730px" /></figure>
+
+
+
+<h5><span class="ez-toc-section" id="%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D1%81%D0%BC%D0%B0%D1%80%D1%82%D1%84%D0%BE%D0%BD%D0%BE%D0%B2_%D0%BA_%D0%B2%D0%B0%D1%88%D0%B5%D0%BC%D1%83_VPN"></span>Подключение смартфонов к вашему VPN<span class="ez-toc-section-end"></span></h5>
+
+
+
+<p><a href="https://www.wireguard.com/install/" target="_blank" rel="noreferrer noopener">Скачиваете</a> клиент WireGuard&#8217;а. </p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img src="https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-140939-576x1024.png" alt="" class="wp-image-5663" height="500" srcset="https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-140939-576x1024.png 576w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-140939-169x300.png 169w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-140939-768x1365.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-140939-864x1536.png 864w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-140939.png 1080w" sizes="(max-width: 576px) 100vw, 576px" /></figure>
+
+
+
+<p>Можно через гугл плей, можно APK файлом.</p>
+
+
+
+<p>Теперь заходим обратно в PuTTY на арендованный сервер.</p>
+
+
+
+<p>Командой pivpn add создаём нового пользователя.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="570" height="191" src="https://pc-01.tech/wp-content/uploads/2022/03/046-1.png" alt="" class="wp-image-5658" srcset="https://pc-01.tech/wp-content/uploads/2022/03/046-1.png 570w, https://pc-01.tech/wp-content/uploads/2022/03/046-1-300x101.png 300w" sizes="(max-width: 570px) 100vw, 570px" /></figure>
+
+
+
+<p>После того как он создался вызываем команду pivpn -qr. Жмёте enter.</p>
+
+
+
+<pre class="wp-block-preformatted">pivpn -qr</pre>
+
+
+
+<p>После этого выпадает нумерованный список созданных пользователей.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="600" height="301" src="https://pc-01.tech/wp-content/uploads/2022/03/047.png" alt="" class="wp-image-5659" srcset="https://pc-01.tech/wp-content/uploads/2022/03/047.png 600w, https://pc-01.tech/wp-content/uploads/2022/03/047-300x151.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></figure>
+
+
+
+<p>В нём выбираем того, который предназначен для мобильного телефона путём ввода его номера из списка. Жмёте enter.</p>
+
+
+
+<p>Высвечивается QR код.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="574" height="731" src="https://pc-01.tech/wp-content/uploads/2022/03/048.png" alt="" class="wp-image-5660" srcset="https://pc-01.tech/wp-content/uploads/2022/03/048.png 574w, https://pc-01.tech/wp-content/uploads/2022/03/048-236x300.png 236w" sizes="(max-width: 574px) 100vw, 574px" /></figure>
+
+
+
+<p>Открываете WireGuard на телефоне:</p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img src="https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150833-576x1024.png" alt="" class="wp-image-5664" height="500" srcset="https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150833-576x1024.png 576w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150833-169x300.png 169w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150833-768x1365.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150833-864x1536.png 864w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150833.png 1080w" sizes="(max-width: 576px) 100vw, 576px" /></figure>
+
+
+
+<p>жмёте на синий плюсик.</p>
+
+
+
+<p>Жмёте сканировать QR код.</p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img src="https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150840-576x1024.png" alt="" class="wp-image-5665" height="500" srcset="https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150840-576x1024.png 576w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150840-169x300.png 169w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150840-768x1365.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150840-864x1536.png 864w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-150840.png 1080w" sizes="(max-width: 576px) 100vw, 576px" /></figure>
+
+
+
+<p>Сканируете его. После чего вводите название для подключения. Я ввёл такое же как на сервере, чтобы не путаться.</p>
+
+
+
+<p>И всё. В программе есть только кнопочки вкл/выкл. </p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img src="https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-151009-576x1024.png" alt="" class="wp-image-5666" height="500" srcset="https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-151009-576x1024.png 576w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-151009-169x300.png 169w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-151009-768x1365.png 768w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-151009-864x1536.png 864w, https://pc-01.tech/wp-content/uploads/2022/03/Screenshot_20220313-151009.png 1080w" sizes="(max-width: 576px) 100vw, 576px" /></figure>
+
+
+
+<p>Во включенном состоянии рядом с часами появится значёк ключика. Программа легкая, запускается быстро из фона не вылетает, так что особых проблем не вызывает.</p>
+
+
+
+<p>Вот и всё. Телефон подключен к вашему VPN</p>
+
+
+
+<h3><span class="ez-toc-section" id="%D0%9A%D0%BE%D1%80%D0%BE%D1%82%D0%BA%D0%BE_%D0%B2%D1%81%D1%91_%D0%B5%D1%89%D1%91_%D1%80%D0%B0%D0%B7"></span>Коротко всё ещё раз<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Если кто-то запутался, то коротко перечисляю всё по пунктам:</p>
+
+
+
+<ol><li>Арендуете сервер</li><li>Скачиваете PuTTY (или любой другой терминал с поддержкой SSH)</li><li>Заходите на свой сервер и меняете пароль root пользователя</li><li>Вводите две команды для установки и настройки piVPN</li><li>Далее, далее, далее, ок, ок, ок&#8230;</li><li>Создаёте необходимое количетсво новых пользователей командой pivpn add</li><li>Устанавливаете клиенты WireGuard на компьютеры и телефоны</li><li>Для телефонов генерируете QR коды для подключения к своему VPN командой pivpn -qr, для компьютеров через командную строку скачиваете конфигурационные файлы. Эти файлы можно передать родственникам или друзьям, кому вы хотите дать доступ к вашему VPN.</li><li>Profit!</li></ol>
+
+
+
+<h3><span class="ez-toc-section" id="%D0%92%D0%B0%D0%B6%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%B5%D0%B4%D0%BE%D1%81%D1%82%D0%B5%D1%80%D0%B5%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5"></span>Важное предостережение<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Для некоторых стран важно учитывать, что на выходе из арендованного сервера нешифрованный трафик виден регуляторам страны, в которой вы арендуете сервер. Ну то есть если вы качаете пиратский фильм через торренты, то могут возникнуть предъявы к той компании у которой вы арендуете сервер. И они вас за это по головке не погладят. Особенно это актуально для Германии. Там вообще строго с пиратством. Штрафы за скаченные фильмы там &#8212; это не истории для запугивания, там это реально есть и работает. Так что если качаете что-то такое эдакое отключайте VPN и качайте через местный интернет, не подставляйте хостера своего сервера. Вы друг другу должны быть друзьями, а не врагами &#8212; это залог долгой работы.</p>
+
+<script type="text/javascript">(function(w,doc) {
+if (!w.__utlWdgt ) {
+    w.__utlWdgt = true;
+    var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';
+    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+    s.src = ('https:' == w.location.protocol ? 'https' : 'http')  + '://w.uptolike.com/widgets/v1/uptolike.js';
+    var h=d[g]('body')[0];
+    h.appendChild(s);
+}})(window,document);
+</script>
+<div style="text-align:left;" data-lang="ru" data-url="https://pc-01.tech/wireguard-vpn/" data-mobile-view="false" data-share-size="20" data-like-text-enable="false" data-background-alpha="0.0" data-pid="cmspc01tech" data-mode="share" data-background-color="#ffffff" data-share-shape="rectangle" data-share-counter-size="12" data-icon-color="#ffffff" data-mobile-sn-ids="fb.vk.tw.ok.wh.tm.vb." data-text-color="#000000" data-buttons-color="#ffffff" data-counter-background-color="#ffffff" data-share-counter-type="disable" data-orientation="horizontal" data-following-enable="false" data-sn-ids="vk.fb.tw.ok.tm." data-preview-mobile="false" data-selection-enable="true" data-exclude-show-more="false" data-share-style="7" data-counter-background-alpha="1.0" data-top-button="false" class="uptolike-buttons" ></div>
+<div class='code-block code-block-7' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<h2>Видео на YouTube канале "Этот компьютер"</h2>
+<div class="epyt-gallery" data-currpage="1" id="epyt_gallery_67983"><div class="epyt-video-wrapper"><iframe  id="_ytid_25672"  width="735" height="413"  data-origwidth="735" data-origheight="413"  src="https://www.youtube.com/embed/bea7NAyieWc?enablejsapi=1&autoplay=0&cc_load_policy=0&cc_lang_pref=&iv_load_policy=1&loop=0&modestbranding=0&rel=0&fs=1&playsinline=0&autohide=2&theme=dark&color=red&controls=1&" class="__youtube_prefs__  no-lazyload" title="YouTube player"  data-epytgalleryid="epyt_gallery_67983"  allow="autoplay; encrypted-media" allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></div><div class="epyt-gallery-subscribe"><a target="_blank" class="epyt-gallery-subbutton" href="?sub_confirmation=1"><img alt="subscribe" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/play-subscribe.png" />Подписаться на канал</a></div><div class="epyt-gallery-list"><div class="epyt-pagination "><div tabindex="0" role="button" class="epyt-pagebutton epyt-prev  hide " data-playlistid="UUPKVp0M7Z3iTRdqC-nIm5ng" data-pagesize="12" data-pagetoken="" data-epcolumns="3" data-showtitle="1" data-showpaging="1" data-autonext="0" data-thumbplay="0"><div class="epyt-arrow">&laquo;</div> <div>Пред.</div></div><div class="epyt-pagenumbers "><div class="epyt-current">1</div><div class="epyt-pageseparator"> / </div><div class="epyt-totalpages">36</div></div><div tabindex="0" role="button" class="epyt-pagebutton epyt-next" data-playlistid="UUPKVp0M7Z3iTRdqC-nIm5ng" data-pagesize="12" data-pagetoken="EAAaBlBUOkNBdw" data-epcolumns="3" data-showtitle="1" data-showpaging="1" data-autonext="0" data-thumbplay="0"><div>Далее</div> <div class="epyt-arrow">&raquo;</div></div><div class="epyt-loader"><img alt="loading" width="16" height="11" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/gallery-page-loader.gif"></div></div><div class="epyt-gallery-allthumbs  epyt-cols-3 "><div tabindex="0" role="button" data-videoid="bea7NAyieWc" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/bea7NAyieWc/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">InfoCAST #054 | Графика от Intel и эффективность параллельного импорта железа</div></div><div tabindex="0" role="button" data-videoid="AGWNFOR7VtM" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/AGWNFOR7VtM/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">Unreal Engine 5. Будущее уже наступило?</div></div><div tabindex="0" role="button" data-videoid="1kp_t0yCE3k" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/1kp_t0yCE3k/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">Как продлить жизнь &quot;железу&quot; | Ограниечение TDP + Андервольтинг (undervolting).</div></div><div class="epyt-gallery-rowbreak"></div><div tabindex="0" role="button" data-videoid="zmuvh4yoMpI" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/zmuvh4yoMpI/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">Прелести своего VPN сервера. Объединяем друг с другом компьютеры и делаем личный облачный сервис</div></div><div tabindex="0" role="button" data-videoid="8eNt41u107o" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/8eNt41u107o/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">Обзор печатающей машинки &quot;Любава&quot; | Механические технологии</div></div><div tabindex="0" role="button" data-videoid="FlewsuI2IRY" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/FlewsuI2IRY/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">InfoCAST #053 | Доступность железа и другие новости за март</div></div><div class="epyt-gallery-rowbreak"></div><div tabindex="0" role="button" data-videoid="2RcuLxhMnDA" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/2RcuLxhMnDA/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">Как просто создать свой быстрый VPN (WireGuard VPN)</div></div><div tabindex="0" role="button" data-videoid="eDbjxSBMA9c" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/eDbjxSBMA9c/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">Сколько ядер нужно для игр. Чем больше - тем лучше? (нет)</div></div><div tabindex="0" role="button" data-videoid="rXJ8JTaWrQU" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/rXJ8JTaWrQU/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">Разгон DDR5. Какой рост производительности и особенности разгона.</div></div><div class="epyt-gallery-rowbreak"></div><div tabindex="0" role="button" data-videoid="3SrbnbhvzTw" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/3SrbnbhvzTw/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">Как на самом деле распределяют нагрузку Windows 10 и 11 на разные типы ядер в Intel Alder Lake?!</div></div><div tabindex="0" role="button" data-videoid="EMkWYFx-BWY" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/EMkWYFx-BWY/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">Какая форма вентилятора эффективнее для кулеров?</div></div><div tabindex="0" role="button" data-videoid="9tqqtTULLa8" class="epyt-gallery-thumb"><div class="epyt-gallery-img-box"><div class="epyt-gallery-img" style="background-image: url(https://i.ytimg.com/vi/9tqqtTULLa8/hqdefault.jpg)"><div class="epyt-gallery-playhover"><img alt="play" class="epyt-play-img" width="30" height="23" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/playhover.png" data-no-lazy="1" data-skipgform_ajax_framebjll="" /><div class="epyt-gallery-playcrutch"></div></div></div></div><div class="epyt-gallery-title">1 vs 2 vs 3 vs 4 канала оперативной памяти</div></div><div class="epyt-gallery-rowbreak"></div><div class="epyt-gallery-clear"></div></div><div class="epyt-pagination "><div tabindex="0" role="button" class="epyt-pagebutton epyt-prev  hide " data-playlistid="UUPKVp0M7Z3iTRdqC-nIm5ng" data-pagesize="12" data-pagetoken="" data-epcolumns="3" data-showtitle="1" data-showpaging="1" data-autonext="0" data-thumbplay="0"><div class="epyt-arrow">&laquo;</div> <div>Пред.</div></div><div class="epyt-pagenumbers "><div class="epyt-current">1</div><div class="epyt-pageseparator"> / </div><div class="epyt-totalpages">36</div></div><div tabindex="0" role="button" class="epyt-pagebutton epyt-next" data-playlistid="UUPKVp0M7Z3iTRdqC-nIm5ng" data-pagesize="12" data-pagetoken="EAAaBlBUOkNBdw" data-epcolumns="3" data-showtitle="1" data-showpaging="1" data-autonext="0" data-thumbplay="0"><div>Далее</div> <div class="epyt-arrow">&raquo;</div></div><div class="epyt-loader"><img alt="loading" width="16" height="11" src="https://pc-01.tech/wp-content/plugins/youtube-embed-plus/images/gallery-page-loader.gif"></div></div></div></div></div>
+<!-- AI CONTENT END 2 -->
+	</div><!-- .entry-content -->
+
+	
+	<footer class="entry-footer">
+		<span class="hm-tags-links"><span class="hm-tagged">Tagged</span><a href="https://pc-01.tech/tag/vpn/" rel="tag">VPN</a></span>	</footer><!-- .entry-footer -->
+
+	
+</article><!-- #post-## -->
+    <div class="hm-related-posts">
+    
+    <div class="wt-container">
+        <h4 class="widget-title">Related Posts</h4>
+    </div>
+
+    <div class="hmrp-container">
+
+        
+                <div class="hm-rel-post">
+                    <a href="https://pc-01.tech/odno-dvuchkanal/" rel="bookmark" title="Один vs Два канала ОЗУ в современных процессорах">
+                        <img width="348" height="215" src="https://pc-01.tech/wp-content/uploads/2021/09/-1-348x215.jpg" class="attachment-hitmag-grid size-hitmag-grid wp-post-image" alt="" loading="lazy" />                    </a>
+                    <h3 class="post-title">
+                        <a href="https://pc-01.tech/odno-dvuchkanal/" rel="bookmark" title="Один vs Два канала ОЗУ в современных процессорах">
+                            Один vs Два канала ОЗУ в современных процессорах                        </a>
+                    </h3>
+                    <p class="hms-meta"><time class="entry-date published" datetime="2021-09-17T17:22:01+03:00">17.09.2021</time><time class="updated" datetime="2021-09-17T17:22:04+03:00">17.09.2021</time></p>
+                </div>
+            
+            
+                <div class="hm-rel-post">
+                    <a href="https://pc-01.tech/comic-con-russia-igromir-2021/" rel="bookmark" title="Comic Con Russia и выставка ИгроМир переносятся на 2022 год">
+                        <img width="348" height="215" src="https://pc-01.tech/wp-content/uploads/2021/09/.jpg-348x215.jpg" class="attachment-hitmag-grid size-hitmag-grid wp-post-image" alt="" loading="lazy" />                    </a>
+                    <h3 class="post-title">
+                        <a href="https://pc-01.tech/comic-con-russia-igromir-2021/" rel="bookmark" title="Comic Con Russia и выставка ИгроМир переносятся на 2022 год">
+                            Comic Con Russia и выставка ИгроМир переносятся на 2022 год                        </a>
+                    </h3>
+                    <p class="hms-meta"><time class="entry-date published" datetime="2021-09-13T12:37:23+03:00">13.09.2021</time><time class="updated" datetime="2021-09-13T12:37:25+03:00">13.09.2021</time></p>
+                </div>
+            
+            
+                <div class="hm-rel-post">
+                    <a href="https://pc-01.tech/dlss-vs-fsr2/" rel="bookmark" title="Результаты сравнения DLSS и FSR">
+                        <img width="348" height="215" src="https://pc-01.tech/wp-content/uploads/2021/08/minimalizm-makro-mikroshema2-348x215.jpg" class="attachment-hitmag-grid size-hitmag-grid wp-post-image" alt="" loading="lazy" />                    </a>
+                    <h3 class="post-title">
+                        <a href="https://pc-01.tech/dlss-vs-fsr2/" rel="bookmark" title="Результаты сравнения DLSS и FSR">
+                            Результаты сравнения DLSS и FSR                        </a>
+                    </h3>
+                    <p class="hms-meta"><time class="entry-date published" datetime="2021-08-06T17:22:39+03:00">06.08.2021</time><time class="updated" datetime="2021-08-06T17:22:43+03:00">06.08.2021</time></p>
+                </div>
+            
+            
+    </div>
+    </div>
+
+    
+	<nav class="navigation post-navigation" aria-label="Записи">
+		<h2 class="screen-reader-text">Навигация по записям</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://pc-01.tech/materinskay_plfta/" rel="prev"><span class="meta-nav" aria-hidden="true">Previous Article</span> <span class="post-title">Материнская плата &#8212; нервная система компьютера. Из чего она состоит?</span></a></div><div class="nav-next"><a href="https://pc-01.tech/vpn-oblako/" rel="next"><span class="meta-nav" aria-hidden="true">Next Article</span> <span class="post-title">Объединение компьютеров через VPN и личное облако на VPS сервере</span></a></div></div>
+	</nav>
+<div id="comments" class="comments-area">
+
+	
+<script type="text/javascript">
+  VKWidgetsComments.push ({
+    element_id: "vk-widget-5599",
+    options: { width: 0, height: 0, limit: 10, attach: "false", norealtime: 0, autoPublish: 0, pageUrl: "https://pc-01.tech/wireguard-vpn/" },page_id: 5599
+  });    
+</script><div class = "vk_widget_comments" id = "vk-widget-5599"></div>
+  	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Добавить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="/wireguard-vpn/#respond" style="display:none;">Отменить ответ</a></small></h3><p class="must-log-in">Для отправки комментария вам необходимо <a href="https://pc-01.tech/wp-login.php?redirect_to=https%3A%2F%2Fpc-01.tech%2Fwireguard-vpn%2F">авторизоваться</a>.</p>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+<aside id="secondary" class="widget-area" role="complementary">
+
+	
+	<section id="vk_group-3" class="widget vk_group">
+			<script type="text/javascript">
+		        VKWidgetsGroup.push ({
+		            element_id: "vk-widget-vk_group-3",
+		            options: { mode: 0, wide: 0, width: "auto", height: 250, color1: "FFFFFF", color2: "2B587A", color3: "5B7FA6" },
+		            group_id: 110713909
+		        });
+	        </script>
+            <div class = "vk_widget_group" id = "vk-widget-vk_group-3"></div>
+        </section><section id="sidebar_posts-8" class="widget widget_sidebar_posts">		<div class="hitmag-category-posts">
+		<h4 class="widget-title">Тесты</h4>
+		
+			
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/wireguard-vpn/" rel="bookmark" title="Как просто создать свой VPN (WireGuard VPN)">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2022/03/VPN-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/wireguard-vpn/" rel="bookmark">Как просто создать свой VPN (WireGuard VPN)</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2022-03-15T14:53:32+03:00">15.03.2022</time><time class="updated" datetime="2022-03-16T21:01:50+03:00">16.03.2022</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/odno-dvuchkanal/" rel="bookmark" title="Один vs Два канала ОЗУ в современных процессорах">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/09/-1-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/odno-dvuchkanal/" rel="bookmark">Один vs Два канала ОЗУ в современных процессорах</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-09-17T17:22:01+03:00">17.09.2021</time><time class="updated" datetime="2021-09-17T17:22:04+03:00">17.09.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/comic-con-russia-igromir-2021/" rel="bookmark" title="Comic Con Russia и выставка ИгроМир переносятся на 2022 год">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/09/.jpg-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/comic-con-russia-igromir-2021/" rel="bookmark">Comic Con Russia и выставка ИгроМир переносятся на 2022 год</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-09-13T12:37:23+03:00">13.09.2021</time><time class="updated" datetime="2021-09-13T12:37:25+03:00">13.09.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/dlss-vs-fsr2/" rel="bookmark" title="Результаты сравнения DLSS и FSR">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/08/minimalizm-makro-mikroshema2-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/dlss-vs-fsr2/" rel="bookmark">Результаты сравнения DLSS и FSR</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-08-06T17:22:39+03:00">06.08.2021</time><time class="updated" datetime="2021-08-06T17:22:43+03:00">06.08.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/fsr-vs-dlss/" rel="bookmark" title="FSR vs DLSS | Опрос по разнице в графике">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/07/minimalizm-makro-mikroshema-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/fsr-vs-dlss/" rel="bookmark">FSR vs DLSS | Опрос по разнице в графике</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-07-28T19:15:05+03:00">28.07.2021</time><time class="updated" datetime="2021-07-28T19:15:09+03:00">28.07.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								        
+        </div><!-- .hitmag-category-posts -->
+
+
+	</section><section id="sidebar_posts-9" class="widget widget_sidebar_posts">		<div class="hitmag-category-posts">
+		<h4 class="widget-title">Обзоры</h4>
+		
+			
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/750-ti-vs-1050-ti-vs-1650-super/" rel="bookmark" title="Эволюция *50* ti серии карт Nvidia (750 ti vs 1050 ti vs 1650 super)">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/07/-1-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/750-ti-vs-1050-ti-vs-1650-super/" rel="bookmark">Эволюция *50* ti серии карт Nvidia (750 ti vs 1050 ti vs 1650 super)</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-07-09T17:49:42+03:00">09.07.2021</time><time class="updated" datetime="2021-07-09T17:49:46+03:00">09.07.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/windows-11/" rel="bookmark" title="Windows 11 | Интерфейс | Установка | Системные требования | Производительность">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/06/-14-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/windows-11/" rel="bookmark">Windows 11 | Интерфейс | Установка | Системные требования | Производительность</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-06-24T15:50:43+03:00">24.06.2021</time><time class="updated" datetime="2021-06-30T13:07:19+03:00">30.06.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/gtx-750-ti/" rel="bookmark" title="4К₽ гейминг. GTX 750 ti в 2021 году">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/06/-13-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/gtx-750-ti/" rel="bookmark">4К₽ гейминг. GTX 750 ti в 2021 году</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-06-18T18:22:08+03:00">18.06.2021</time><time class="updated" datetime="2021-06-18T18:22:11+03:00">18.06.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/oblaka/" rel="bookmark" title="Сравнение сервисов облачного гейминга">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/04/.jpg-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/oblaka/" rel="bookmark">Сравнение сервисов облачного гейминга</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-04-16T18:18:21+03:00">16.04.2021</time><time class="updated" datetime="2021-04-21T15:34:21+03:00">21.04.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/aigo-shadow-max/" rel="bookmark" title="Круглый кулер со скрытым вентилятором. Обзор Aigo Shadow max">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/03/.jpg-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/aigo-shadow-max/" rel="bookmark">Круглый кулер со скрытым вентилятором. Обзор Aigo Shadow max</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-03-05T17:36:57+03:00">05.03.2021</time><time class="updated" datetime="2021-03-05T17:37:01+03:00">05.03.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								        
+        </div><!-- .hitmag-category-posts -->
+
+
+	</section><section id="sidebar_posts-10" class="widget widget_sidebar_posts">		<div class="hitmag-category-posts">
+		<h4 class="widget-title">Статьи</h4>
+		
+			
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/vpn-oblako/" rel="bookmark" title="Объединение компьютеров через VPN и личное облако на VPS сервере">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2022/04/.jpg-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/vpn-oblako/" rel="bookmark">Объединение компьютеров через VPN и личное облако на VPS сервере</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2022-04-08T19:09:24+03:00">08.04.2022</time><time class="updated" datetime="2022-04-08T19:09:26+03:00">08.04.2022</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/materinskay_plfta/" rel="bookmark" title="Материнская плата &#8212; нервная система компьютера. Из чего она состоит?">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/09/-2-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/materinskay_plfta/" rel="bookmark">Материнская плата &#8212; нервная система компьютера. Из чего она состоит?</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-09-24T17:33:00+03:00">24.09.2021</time><time class="updated" datetime="2021-09-24T17:33:04+03:00">24.09.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/rx-6600-xt-2/" rel="bookmark" title="AMD официально представили RX 6600 XT">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/07/RX-6000-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/rx-6600-xt-2/" rel="bookmark">AMD официально представили RX 6600 XT</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-07-30T09:19:03+03:00">30.07.2021</time><time class="updated" datetime="2021-07-30T09:19:07+03:00">30.07.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/komplektushie/" rel="bookmark" title="Как менялись комплектующие?">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/07/-4-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/komplektushie/" rel="bookmark">Как менялись комплектующие?</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-07-16T17:16:19+03:00">16.07.2021</time><time class="updated" datetime="2021-07-16T17:16:23+03:00">16.07.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								<div class="hms-post">
+													<div class="hms-thumb">
+								<a href="https://pc-01.tech/windows-11/" rel="bookmark" title="Windows 11 | Интерфейс | Установка | Системные требования | Производительность">	
+									<img width="135" height="93" src="https://pc-01.tech/wp-content/uploads/2021/06/-14-135x93.jpg" class="attachment-hitmag-thumbnail size-hitmag-thumbnail wp-post-image" alt="" loading="lazy" />								</a>
+							</div>
+												<div class="hms-details">
+							<h3 class="hms-title"><a href="https://pc-01.tech/windows-11/" rel="bookmark">Windows 11 | Интерфейс | Установка | Системные требования | Производительность</a></h3>							<p class="hms-meta"><time class="entry-date published" datetime="2021-06-24T15:50:43+03:00">24.06.2021</time><time class="updated" datetime="2021-06-30T13:07:19+03:00">30.06.2021</time></p>
+						</div>
+					</div><!-- .hms-post -->
+								        
+        </div><!-- .hitmag-category-posts -->
+
+
+	</section><section id="categories-2" class="widget widget_categories"><h4 class="widget-title">Рубрики</h4>
+			<ul>
+					<li class="cat-item cat-item-33"><a href="https://pc-01.tech/category/video/">Видео</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://pc-01.tech/category/news/">Новости</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://pc-01.tech/category/review/">Обзоры</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="https://pc-01.tech/category/24/">Статьи</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://pc-01.tech/category/tests/">Тесты</a>
+</li>
+			</ul>
+
+			</section>
+	
+</aside><!-- #secondary -->	</div><!-- .hm-container -->
+	</div><!-- #content -->
+
+	
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="hm-container">
+
+			
+			<div class="footer-widget-area">
+				<div class="footer-sidebar" role="complementary">
+											
+									</div><!-- .footer-sidebar -->
+		
+				<div class="footer-sidebar" role="complementary">
+					
+									</div><!-- .footer-sidebar -->		
+
+				<div class="footer-sidebar" role="complementary">
+					<aside id="nav_menu-12" class="widget widget_nav_menu"><div class="menu-1-container"><ul id="menu-1" class="menu"><li id="menu-item-887" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-887"><a href="https://pc-01.tech/frametimehandler/">FrameTimeHandler</a></li>
+<li id="menu-item-954" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-954"><a href="https://pc-01.tech/donate/">Донаты</a></li>
+<li id="menu-item-2102" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2102"><a href="https://pc-01.tech/cu/">Купон 5 Евро в магазине computeruniverse.net</a></li>
+</ul></div></aside>				</div><!-- .footer-sidebar -->			
+			</div><!-- .footer-widget-area -->
+
+			
+		</div><!-- .hm-container -->
+
+		<div class="site-info">
+			<div class="hm-container">
+				<div class="site-info-owner">
+					Copyright &#169; 2022 <a href="https://pc-01.tech/" title="PC-01 | Этот компьютер" >PC-01 | Этот компьютер</a>.				</div>			
+				<div class="site-info-designer">
+					Powered by <a href="https://wordpress.org" target="_blank" title="WordPress">WordPress</a> and <a href="https://themezhut.com/themes/hitmag/" target="_blank" title="HitMag WordPress Theme">HitMag</a>.				</div>
+			</div><!-- .hm-container -->
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+
+	
+</div><!-- #page -->
+
+
+			<a id="scroll-to-top" href="#" title="Scroll to Top">Top</a>
+				<div id="vk_api_transport"></div>
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function async_load(u, id) {
+			if (!gid(id)) {
+				s = "script", d = document,
+					o = d.createElement(s);
+				o.type = 'text/javascript';
+				o.id = id;
+				o.async = true;
+				o.src = u;
+				// Creating scripts on page
+				x = d.getElementsByTagName(s)[0];
+				x.parentNode.insertBefore(o, x);
+			}
+		}
+
+		function gid(id) {
+			return document.getElementById(id);
+		}
+
+
+		window.addEventListener('load', function () {
+				async_load("//vk.com/js/api/openapi.js", "id-vkontakte");//vkontakte
+			}
+		);
+
+
+		// Инициализация vkontakte
+		window.vkAsyncInit = function () {
+			//console.log(VKWidgetsLike);
+			if (typeof VKWidgetsLike !== 'undefined' && VKWidgetsLike.length > 0) {
+				for (index = 0; index < VKWidgetsLike.length; ++index) {
+					VK.Widgets.Like(VKWidgetsLike[index].element_id, VKWidgetsLike[index].options);
+				}
+			}
+
+			if (typeof VKWidgetsGroup !== 'undefined' && VKWidgetsGroup.length > 0) {
+				for (index = 0; index < VKWidgetsGroup.length; ++index) {
+					//console.log(VKWidgetsGroup);
+					VK.Widgets.Group(VKWidgetsGroup[index].element_id, VKWidgetsGroup[index].options, VKWidgetsGroup[index].group_id);
+				}
+
+				VK.Observer.subscribe('widgets.groups.joined', function (n) {
+					//console.log(VKWidgetsGroup[n - 1].group_id);
+
+					var data = {
+						action: 'evc_add_vk_widget_stats',
+						gid: VKWidgetsGroup[n - 1].group_id,
+						widget: 'group',
+						waction: 'joined'
+					};
+					jQuery.ajax({
+						url: ajaxurl,
+						data: data,
+						type: "POST",
+						dataType: 'json'
+					});
+
+				});
+
+				VK.Observer.subscribe('widgets.groups.leaved', function (n) {
+					//console.log(VKWidgetsGroup[n - 1].group_id);
+
+					var data = {
+						action: 'evc_add_vk_widget_stats',
+						gid: VKWidgetsGroup[n - 1].group_id,
+						widget: 'group',
+						waction: 'leaved'
+					};
+					jQuery.ajax({
+						url: ajaxurl,
+						data: data,
+						type: "POST",
+						dataType: 'json'
+					});
+
+				});
+			}
+
+				// console.log(VKWidgetsContactUs);
+	// Contact Us
+	if (typeof VKWidgetsContactUs !== 'undefined' ) {
+	//console.log(VKWidgetsContactUs);
+
+	for (index = 0; index < VKWidgetsContactUs.length; ++index) {
+	VK.Widgets.ContactUs(
+	VKWidgetsContactUs[index].element_id,
+	VKWidgetsContactUs[index].options,
+	VKWidgetsContactUs[index].owner_id
+	);
+	}
+	}
+		//console.log(VKWidgetsComments);
+	// COMMENTS
+	if (typeof VKWidgetsComments !== 'undefined' ) {
+	//console.log(VKWidgetsComments);
+	for (index = 0; index < VKWidgetsComments.length; ++index) {
+	VK.Widgets.Comments(
+	VKWidgetsComments[index].element_id,
+	VKWidgetsComments[index].options,
+	VKWidgetsComments[index].page_id
+	);
+	}
+	
+      evcCommentsRefresh = false;            
+      var new_data = {
+        post_id: evc_post_id,
+        url: document.URL,
+        widget_api_id: jQuery('meta[property="vk:app_id"]').attr('content'),
+        action: 'evc_comments_refresh'
+      };
+
+      VK.Observer.subscribe('widgets.comments.new_comment', function(num, last_comment, date, sign, wID, n) {
+
+        if ( typeof VKWidgetsComments[n - 1] !== 'undefined' && typeof VKWidgetsComments[n - 1].page_id !== 'undefined' ) 
+          new_data.page_id = VKWidgetsComments[n - 1].page_id;
+        else
+          new_data.page_id = VKWidgetsComments[0].page_id;
+        //console.log(new_data); //
+        
+        if (!evcCommentsRefresh) {
+          evcCommentsRefresh = true;
+          jQuery.ajax({
+            url: ajaxurl,
+            data: new_data,
+            type:"POST",
+            dataType: 'json',
+            success: function(data) {
+              //console.log(data); //
+              evcCommentsRefresh = false;
+            }
+          }); 
+        }
+        
+      });
+      
+      VK.Observer.subscribe('widgets.comments.delete_comment', function(num, last_comment, date, sign) {
+        //console.log(date);
+        
+      });    
+     
+	}
+	  //console.log(VKWidgetsPolls);
+  // Polls
+    if (typeof VKWidgetsPolls !== 'undefined' ) {
+      //console.log(VKWidgetsPolls);
+      for (index = 0; index < VKWidgetsPolls.length; ++index) {
+        VK.Widgets.Poll(
+          VKWidgetsPolls[index].element_id, 
+          VKWidgetsPolls[index].options, 
+          VKWidgetsPolls[index].poll_id
+        );
+      }
+    
+      evcCommentsRefresh = false;            
+      var new_data = {
+        post_id: evc_post_id,
+        url: document.URL,
+        widget_api_id: jQuery('meta[property="vk:app_id"]').attr('content'),
+        action: 'evc_comments_refresh'
+      };
+
+      VK.Observer.subscribe('widgets.comments.new_comment', function(num, last_comment, date, sign, wID, n) {
+
+        if ( typeof VKWidgetsComments[n - 1] !== 'undefined' && typeof VKWidgetsComments[n - 1].page_id !== 'undefined' ) 
+          new_data.page_id = VKWidgetsComments[n - 1].page_id;
+        else
+          new_data.page_id = VKWidgetsComments[0].page_id;
+        //console.log(new_data); //
+        
+        if (!evcCommentsRefresh) {
+          evcCommentsRefresh = true;
+          jQuery.ajax({
+            url: ajaxurl,
+            data: new_data,
+            type:"POST",
+            dataType: 'json',
+            success: function(data) {
+              //console.log(data); //
+              evcCommentsRefresh = false;
+            }
+          }); 
+        }
+        
+      });
+      
+      VK.Observer.subscribe('widgets.comments.delete_comment', function(num, last_comment, date, sign) {
+        //console.log(date);
+        
+      });    
+     
+    
+    }
+	//console.log(VKWidgetsSubscribe);
+	// Widget Subscribe
+	if (typeof VKWidgetsSubscribe !== 'undefined' ) {
+
+	var subscribeCookieExpires = 1; // !!!
+
+	for (index = 0; index < VKWidgetsSubscribe.length; ++index) {
+	VK.Widgets.Subscribe(
+	VKWidgetsSubscribe[index].element_id,
+	VKWidgetsSubscribe[index].options,
+	VKWidgetsSubscribe[index].owner_id
+	);
+	}
+
+	VK.Observer.subscribe('widgets.subscribed', function(n) {
+
+	vkwidget = jQuery("#vkwidget" + n).parent();
+	vkwidgetID = jQuery(vkwidget).attr('id');
+
+	if (jQuery(vkwidget).hasClass('evc-vk-lock')) {
+	console.log('Fire');
+	//vkwidgetID = jQuery("#vkwidget" + n).parent().attr('id');
+	subscribeObj = jQuery.grep(VKWidgetsSubscribe, function(e){ return e.element_id == vkwidgetID; });
+	if (subscribeObj.length != 0) {
+	o = subscribeObj[0].owner_id;
+	if (jQuery.cookie('vkUnLock' + o) == 'undefined' || !jQuery.cookie('vkUnLock' + o) || jQuery.cookie('vkUnLock' + o) !=  subscribeObj[0].owner_id ) {
+	jQuery.cookie('vkUnLock' + o, subscribeObj[0].owner_id, { expires: subscribeCookieExpires, path: '/' });
+	}
+	location.reload();
+	}
+	}
+	});
+
+	VK.Observer.subscribe('widgets.unsubscribed', function(n) {
+
+	vkwidget = jQuery("#vkwidget" + n).parent();
+	vkwidgetID = jQuery(vkwidget).attr('id');
+
+	if (jQuery(vkwidget).hasClass('evc-vk-lock')) {
+	console.log('Fire');
+	subscribeObj = jQuery.grep(VKWidgetsSubscribe, function(e){ return e.element_id == vkwidgetID;});
+	if (subscribeObj.length != 0) {
+	o = subscribeObj[0].owner_id;
+	if (jQuery.cookie('vkUnLock' + o) != 'undefined') {
+	jQuery.removeCookie('vkUnLock' + o);
+	}
+	}
+	}
+	});
+
+
+	}
+			// console.log(VKWidgetsContactUs);
+	// Contact Us
+	if (typeof VKWidgetsCommunityMessages !== 'undefined') {
+	console.log(VKWidgetsCommunityMessages);
+
+	for (index = 0; index < VKWidgetsCommunityMessages.length; ++index) {
+	VK.Widgets.CommunityMessages(
+	VKWidgetsCommunityMessages[index].element_id,
+	VKWidgetsCommunityMessages[index].group_id,
+	VKWidgetsCommunityMessages[index].options
+	);
+	}
+	}
+		
+		};
+
+		/* ]]> */
+	</script><script type='text/javascript' src='https://pc-01.tech/wp-content/plugins/easy-vkontakte-connect/js/evc-share.js' id='evc-share-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/plugins/jquery-smooth-scroll/js/script.min.js?ver=5.9.3' id='jquery-smooth-scroll-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/themes/hitmag/js/navigation.js?ver=20151215' id='hitmag-navigation-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/themes/hitmag/js/skip-link-focus-fix.js?ver=20151215' id='hitmag-skip-link-focus-fix-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-includes/js/comment-reply.min.js?ver=5.9.3' id='comment-reply-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/themes/hitmag/js/jquery.flexslider-min.js?ver=5.9.3' id='jquery-flexslider-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/themes/hitmag/js/scripts.js?ver=5.9.3' id='hitmag-scripts-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/themes/hitmag/js/jquery.magnific-popup.min.js?ver=5.9.3' id='jquery-magnific-popup-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/plugins/youtube-embed-plus/scripts/fitvids.min.js?ver=13.4.3' id='__ytprefsfitvids__-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/plugins/easy-table-of-contents/vendor/js-cookie/js.cookie.min.js?ver=2.2.1' id='js-cookie-js'></script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js?ver=1.9.2' id='jquery-sticky-kit-js'></script>
+<script type='text/javascript' id='ez-toc-js-js-extra'>
+/* <![CDATA[ */
+var ezTOC = {"smooth_scroll":"1","visibility_hide_by_default":"","width":"auto","scroll_offset":"30"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://pc-01.tech/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js?ver=2.0.17-1618561467' id='ez-toc-js-js'></script>
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		jQuery(document).ready(function ($) {
+
+			if (typeof VKWidgetsComments !== 'undefined' && VKWidgetsComments.length && evc_post_id) {
+				if ($('#vk-widget-' + evc_post_id).length) {
+										$('#comments').prepend($('#vk-widget-' + evc_post_id));
+									}
+
+							}
+
+			// Rresponsive VK Comments Widget Width
+						if ($('.vk_widget_comments').length) {
+
+				responsiveVkWidget();
+				$(window).on('resize', function () {
+					responsiveVkWidget();
+				});
+			}
+			
+			function responsiveVkWidget() {
+				var vkParentWidth = parseInt($('.vk_widget_comments').parent().width());
+
+				$('.vk_widget_comments, .vk_widget_comments iframe').css({
+					width: vkParentWidth
+				});
+				$('.vk_widget_comments, .vk_widget_comments iframe').attr('width', vkParentWidth);
+			}
+
+			// END Rresponsive VK Comments Widget Width
+
+
+		}); // End jQuery
+
+		/* ]]> */
+	</script><!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter56038906 = new Ya.Metrika({id:56038906, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/56038906" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter --></body>
+</html>
